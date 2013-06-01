@@ -1,0 +1,3606 @@
+<?xml version="1.0"?><doc>
+    <assembly>
+        <name>Microsoft.Advertising.Mobile.Xna</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.Action">
+            <summary>
+            Represent the actions allowed on an Ad
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Action.Browse">
+            <summary>
+            Represent the action where a web browser is evoked to display a web page
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Action.Call">
+            <summary>
+            Represent a phone call action
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Action.Map">
+            <summary>
+            Represents a click to map action
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Action.First">
+            <summary>
+            First action - new actions need to be inserted before these two
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Action.Last">
+            <summary>
+             Last action - new actions need to be inserted before these two
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.DismissEventHandler">
+            <summary>
+            Event handler to notify the host control when this dialog is dismissed
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.ActionItemInfo">
+            <summary>
+            Represents a table entry for a possible action
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ActionItemInfo.Action">
+            <summary>
+            The action the corresponding button supports
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ActionItemInfo.ActionText">
+            <summary>
+            The text associated with this action
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ActionItemInfo.ActionUrl">
+            <summary>
+            The formatted URI for the given action
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionItemInfo.#ctor(Microsoft.Advertising.Mobile.Xna.Action,System.String,System.String)">
+            <summary>
+            Creates this action table entry with the given objects
+            </summary>
+            <param name="assocAction">Action associated with this entry</param>
+            <param name="actionPrefix">Text prefix for this action</param>
+            <param name="actionUrl">Formatted URI for the given action</param>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.ActionHandlerEventArgs">
+            <summary>
+            Action handler event argument is delivered to the AdControl when the action dialog
+            is dismissed for multi-action or when the action is invoked for single-action.
+            It contains the action handling state.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionHandlerEventArgs.#ctor(System.Boolean)">
+            <summary>
+            Constructor of ActionHandlerEventArgs
+            </summary>
+            <param name="actionOnGoing">True if the action is on going.</param>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.ActionHandlerEventArgs.ActionOnGoing">
+            <summary>
+            Property for ActionOnGoing flag
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.ActionHandler">
+            <summary>
+            Action handler that creates the action dialog and handles dialog events.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ActionHandler.ActionTable">
+            <summary>
+            Table representing all the possible actions and their associations
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionHandler.#ctor(Microsoft.Advertising.Mobile.Xna.Advertisement,Microsoft.Xna.Framework.Graphics.GraphicsDevice,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteFont,Microsoft.Advertising.Mobile.Xna.AdTextureSet)">
+            <summary>
+            Constructor for ActioHandler
+            </summary>
+            <param name="ad">The ad with associated actions.</param>
+            <param name="graphicDevice">Graphic device used to render ActionMenu.</param>
+            <param name="phoneRect">The view surface of the phone.</param>
+            <param name="font">The font used to render to the ActionMenu.</param>
+            <param name="textures">The common set of shared textures used for rendering.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionHandler.HandleInput(Microsoft.Xna.Framework.Input.MouseState)">
+            <summary>
+            Called to update input on the menu
+            </summary>
+            <param name="mouseState">The state of the input system.</param>
+            <returns>Whether the action was handled</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionHandler.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Update the action handler
+            </summary>
+            <param name="gameTime">Provides a snapshot of timing values.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionHandler.Draw(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Draw the action handling UI
+            </summary>
+            <param name="viewportBounds">The bounding rectangle of the viewport.</param>
+            <param name="spriteBatch">Batch of sprites to use for rendering.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionHandler.Engage(Microsoft.Advertising.Mobile.Xna.DismissEventHandler)">
+            <summary>
+            Start engaging the ad
+            </summary>
+            <param name="dismissHandler">Event handler invoked when the ad is dismissed.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionHandler.Dismiss">
+            <summary>
+            Dismiss the action handler for external reasons
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionHandler.ChangeDimensions(System.Int32,System.Int32)">
+            <summary>
+            Change the width and height alloted to the action handler
+            </summary>
+            <param name="width">The new width in pixels.</param>
+            <param name="height">The new width in pixels.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionHandler.DisplayUriFromAction(Microsoft.Advertising.Mobile.Xna.Advertisement,Microsoft.Advertising.Mobile.Xna.Action)">
+            <summary>
+            Retrieves a formatted URI for the given action from the given ad
+            </summary>
+            <param name="ad">Advertisement from whicih to get the URI</param>
+            <param name="action">Action for which to get the URI</param>
+            <returns>Formatted URI</returns>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.ActionHandler.Engagable">
+            <summary>
+            Whether the ad has actions associated with it
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.ActionButton">
+            <summary>
+            An animated button for the action menu
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.AdButton">
+            <summary>
+            Encapsulates the functionality for a button, used by the ad system
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdButton.#ctor">
+            <summary>
+            Constructor of AdButton class
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdButton.UpdateInput(Microsoft.Xna.Framework.Input.MouseState)">
+            <summary>
+            Update the state of the button base don input
+            </summary>
+            <param name="mouseState">The state of the mouse.</param>
+            <returns>Whether this button handled the input.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdButton.Reset">
+            <summary>
+            Reset the button to it's initial state
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdButton.OnActivate">
+            <summary>
+            Called when the button is activated
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdButton.InputHandledGivenState">
+            <summary>
+            Returns whether the button consumes input given the current state
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdButton.State">
+            <summary>
+            The current state of the button
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdButton.Rect">
+            <summary>
+            The size of the button
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdButton.Position">
+            <summary>
+            The XY position of the button
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdButton.MinimumSize">
+            <summary>
+            The minimum dimensions of the button
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.AdButton.AdButtonState">
+            <summary>
+            The various states of the button
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionButton.Draw(System.Single,Microsoft.Xna.Framework.Graphics.SpriteBatch,System.Single,Microsoft.Advertising.Mobile.Xna.AdTextureSet)">
+            <summary>
+            Draw the button
+            </summary>
+            <param name="animationPercent">The progress of the animation.</param>
+            <param name="spriteBatch"></param>
+            <param name="opacity">The opacity factor of the button.</param>
+            <param name="textures">Texture properties used to render.</param>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.ActionMenu">
+            <summary>
+            The action menu displays choices to the player once the ad is engaged
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ActionMenu.AnimationLengthInMilliseconds">
+            <summary>
+            The number of seconds each fade lasts
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ActionMenu.InactiveOpacity">
+            <summary>
+            The opacitiy value when the menu is inactive
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ActionMenu.ActiveOpacity">
+            <summary>
+            The opacity when the menu is active
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ActionMenu.AnimationFactor">
+            <summary>
+            The factor to apply to animation between active and inactive states
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ActionMenu.AnimationTimeInMilliseconds">
+            <summary>
+            The current time of animation
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionMenu.#ctor(Microsoft.Advertising.Mobile.Xna.Advertisement,System.Collections.Generic.List{Microsoft.Advertising.Mobile.Xna.ActionItemInfo},Microsoft.Xna.Framework.Graphics.GraphicsDevice,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteFont,Microsoft.Advertising.Mobile.Xna.AdTextureSet)">
+            <summary>
+            Constructor of ActionMenu class
+            </summary>
+            <param name="ad">The advertisement the menu is to display actions for.</param>
+            <param name="actionInfo">The list of action information associated with the ad.</param>
+            <param name="graphicDevice">The graphic device used to render the menu.</param>
+            <param name="phoneRect">The screen rectangle of the view surface.</param>
+            <param name="font">The font used to render the ad.</param>
+            <param name="textures">The common set of shared textures used for rendering.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionMenu.InvokeAction(Microsoft.Advertising.Mobile.Xna.Action)">
+            <summary>
+            Invoke the specified action and hide the dialog
+            </summary>
+            <param name="action">The action to invoke on the ad.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionMenu.FadeIn">
+            <summary>
+            Start fading the menu in.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionMenu.FadeOut">
+            <summary>
+            Start fading the menu out.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionMenu.OnDimensionsChanged(System.Int32,System.Int32)">
+            <summary>
+            Abstract function to handle dimension changes
+            </summary>
+            <param name="width">The new width.</param>
+            <param name="height">The new height.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionMenu.GetAnimatedRectangle(System.Single,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            Create a rectangle at the position the animation dictates
+            </summary>
+            <param name="animationFactor">The animation progress factor.</param>
+            <param name="destination">The target rectangle.</param>
+            <returns>The new rectangle.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionMenu.ChangeDimensions(System.Int32,System.Int32)">
+            <summary>
+            Change the width and height of the menu
+            </summary>
+            <param name="width">The new width in pixels.</param>
+            <param name="height">The new width in pixels.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionMenu.HandleInput(Microsoft.Xna.Framework.Input.MouseState)">
+            <summary>
+            Called to update input on the menu
+            </summary>
+            <param name="mouseState">The current state of the input system.</param>
+            <returns>Whether the action was handled</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionMenu.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Allows the menu to update itself.
+            </summary>
+            <param name="gameTime">Provides a snapshot of timing values.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionMenu.Draw(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Draw the menu according to the input parameters.
+            </summary>
+            <param name="viewportBounds">The bounding rectangle of the viewport.</param>
+            <param name="spriteBatch">Batch fo sprites to use for rendering.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionMenu.Open(Microsoft.Advertising.Mobile.Xna.DismissEventHandler)">
+            <summary>
+            Display the menu
+            </summary>
+            <param name="onClose">Event handler to invoke when the menu is closed.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ActionMenu.Cancel(System.Boolean)">
+            <summary>
+            Cancel the current action menu
+            </summary>
+            <param name="fadeOut">Indicates whether the menu should be faded out.</param>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.ActionMenu.AnimationPercentage">
+            <summary>
+            The percentage along the animation
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.ActionMenu.Opacity">
+            <summary>
+            Gets a value indicating the opacity to apply to menu elements
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.IconActionButton">
+            <summary>
+            An icon button associated with a specific action
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.IconActionButton.#ctor(Microsoft.Xna.Framework.Graphics.SpriteFont,System.String,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Texture2D,System.Action)">
+            <summary>
+            Constructor of ActionButton class
+            </summary>
+            <param name="font"></param>
+            <param name="text"></param>
+            <param name="lightTexture">Texture to display on the button.</param>
+            <param name="darkTexture">Texture to display on the button when pressed.</param>
+            <param name="action">The action to perform on click.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.IconActionButton.Draw(System.Single,Microsoft.Xna.Framework.Graphics.SpriteBatch,System.Single,Microsoft.Advertising.Mobile.Xna.AdTextureSet)">
+            <summary>
+            Draw the button
+            </summary>
+            <param name="animationPercent">The progress of the animation.</param>
+            <param name="spriteBatch"></param>
+            <param name="opacity">The opacity factor of the button.</param>
+            <param name="textures">Texture properties used to render.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.IconActionButton.OnActivate">
+            <summary>
+            Called when the button is activated
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.IconActionButton.GetAnimatedRectangle(System.Single,System.Int32,System.Int32)">
+            <summary>
+            Create a rectangle at the position the animation dictates
+            </summary>
+            <param name="animationFactor">The animation progress factor.</param>
+            <param name="width">The width of the rectangle to create.</param>
+            <param name="height">The height of the rectangle to create.</param>
+            <returns>The new rectangle.</returns>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.IconActionMenu">
+            <summary>
+            Implementation of the ActionMenu class. Displays the actions in text format.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.IconActionMenu.ButtonPaddingHorizontal">
+            <summary>
+            The number of pixels between buttons
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.IconActionMenu.#ctor(Microsoft.Advertising.Mobile.Xna.Advertisement,System.Collections.Generic.List{Microsoft.Advertising.Mobile.Xna.ActionItemInfo},Microsoft.Xna.Framework.Graphics.GraphicsDevice,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteFont,Microsoft.Advertising.Mobile.Xna.AdTextureSet)">
+            <summary>
+            Constructor of IconActionMenu class
+            </summary>
+            <param name="ad">The advertisement the menu is to display actions for.</param>
+            <param name="actionInfo">The list of action information associated with the ad.</param>
+            <param name="graphicDevice">The graphic device used to render the menu.</param>
+            <param name="phoneRect">The screen rectangle of the view surface.</param>
+            <param name="font">The font used to render the ad.</param>
+            <param name="textures">The common set of shared textures used for rendering.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.IconActionMenu.OnDimensionsChanged(System.Int32,System.Int32)">
+            <summary>
+            Abstract function to handle dimension changes
+            </summary>
+            <param name="width">The new width.</param>
+            <param name="height">The new height.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.IconActionMenu.CreateUI(System.Int32,System.Int32)">
+            <summary>
+            Create the UI elements
+            </summary>
+            <param name="width">The new width in pixels.</param>
+            <param name="height">The new width in pixels.</param>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.AdException">
+            <summary>
+            Represents errors that might occur during operation of the Microsoft AdControl.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdException.#ctor(Microsoft.Advertising.Mobile.Xna.ErrorCode,System.String,System.Exception)">
+            <summary>
+            Instantiates a new instance of the AdException class with a specified error info.
+            </summary>
+            <param name="error">The AdControl error code for the error that causes this exception</param>
+            <param name="errorMessage">Error Mesage</param>
+            <param name="innerException">Inner exception</param>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdException.Error">
+            <summary>
+            Get the error code of this exception instance
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.AdManager">
+            <summary>
+            A class deriving from <see cref="T:Microsoft.Xna.Framework.DrawableGameComponent"/> allowing the creation of 
+            ads to monetize an Xna application.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.#ctor(Microsoft.Xna.Framework.Game,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Advertising.Mobile.Xna.AdManager"/> class within the context of the specified game.
+            </summary>
+            <param name="game">The owning game.</param>
+            <param name="applicationId">The application ID that has been registered with the ad provider.</param>
+            <exception cref="T:System.ArgumentNullException">game is null.</exception>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.LoadContent">
+            <summary>
+            Allow the <see cref="T:Microsoft.Advertising.Mobile.Xna.AdManager"/> to create graphical resources used when rendering ads.
+            </summary>
+            <remarks>This function must be called before any calls to <see cref="M:Microsoft.Advertising.Mobile.Xna.AdManager.Draw(Microsoft.Xna.Framework.GameTime)"/> or <see cref="M:Microsoft.Advertising.Mobile.Xna.AdManager.Update(Microsoft.Xna.Framework.GameTime)"/></remarks>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.UnloadContent">
+            <summary>
+            Free all graphical resources created by the <see cref="T:Microsoft.Advertising.Mobile.Xna.AdManager"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the DrawableGameComponent and optionally releases the managed resources.
+            </summary>
+            <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Advances the state of all ads based on the input timing values.
+            </summary>
+            <param name="gameTime">Provides a snapshot of timing values.</param>
+            <exception cref="T:System.InvalidOperationException">The Font property has not been set or the LoadContent function was not called.</exception>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.Draw(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Draws graphical elements of the ads.
+            </summary>
+            <param name="gameTime">Provides a snapshot of timing values.</param>
+            <remarks>This call should be made following all other draws calls. Ads should not be covered by other graphical elements.</remarks>
+            <exception cref="T:System.InvalidOperationException">The Font property has not been set or the LoadContent function was not called.</exception>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.CreateAd(System.String,Microsoft.Xna.Framework.Rectangle,Microsoft.Advertising.Mobile.Xna.RotationMode,System.Boolean)">
+            <summary>
+            Create a new instance of <see cref="T:Microsoft.Advertising.Mobile.Xna.Ad"/> based on the input parameters.
+            </summary>
+            <param name="unitId">The unique identifier for the ad.</param>
+            <param name="displayRect">The rectangle to render the ad in.</param>
+            <param name="rotationMode">The rotation behavior of the ad.</param>
+            <param name="premium">Indicates if the ad is a premium ad. Premium ads are highly targeted and require additional setup with your account manager.</param>
+            <returns>A new instance of the <see cref="T:Microsoft.Advertising.Mobile.Xna.Ad"/> class.</returns>
+            <exception cref="T:System.ArgumentException">displayRect is not fully contained within the current viewport.</exception>
+            <exception cref="T:System.ArgumentException">premium is false and ApplicationId specified at the time this AdManager was created is null or empty.</exception>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.CreateAd(System.String,Microsoft.Xna.Framework.Rectangle,Microsoft.Advertising.Mobile.Xna.RotationMode)">
+            <summary>
+            Create a new instance of <see cref="T:Microsoft.Advertising.Mobile.Xna.Ad"/> with default non-premium targeting.
+            </summary>
+            <param name="unitId">The unique identifier for the ad.</param>
+            <param name="displayRect">The rectangle to render the ad in.</param>
+            <param name="rotationMode">The rotation behavior of the ad.</param>
+            <returns>Ad instance of the <see cref="T:Microsoft.Advertising.Mobile.Xna.Ad"/> class.</returns>
+            <exception cref="T:System.InvalidOperationException">ApplicationId specified at the time this AdManager was created is null or empty.</exception>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.CreateAd(System.String,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            Create a new instance of <see cref="T:Microsoft.Advertising.Mobile.Xna.Ad"/> with default automatic rotation and non-premium targeting.
+            </summary>
+            <param name="unitId">The unique identifier for the ad.</param>
+            <param name="displayRect">The rectangle to render the ad in.</param>
+            <returns>An instance of the <see cref="T:Microsoft.Advertising.Mobile.Xna.Ad"/> class.</returns>
+            <exception cref="T:System.InvalidOperationException">ApplicationId specified at the time this AdManager was created is null or empty.</exception>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.RemoveAd(Microsoft.Advertising.Mobile.Xna.Ad)">
+            <summary>
+            Remove an instance of <see cref="T:Microsoft.Advertising.Mobile.Xna.Ad"/> from the manager to stop updating and drawing it.
+            </summary>
+            <param name="ad">The instance of <see cref="T:Microsoft.Advertising.Mobile.Xna.Ad"/> to remove.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.RemoveAll">
+            <summary>
+            Remove all instances of <see cref="T:Microsoft.Advertising.Mobile.Xna.Ad"/> from the manager.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.OnEngagedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Callback invoked when the engaged property of a child ad changes
+            </summary>
+            <param name="sender">The ad.</param>
+            <param name="eventArgs">Empty event args.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.OnVisibleChanged(System.Object,System.EventArgs)">
+            <summary>
+            Called when the Visible property changes. Raises the VisibleChanged event.
+            </summary>
+            <param name="sender">The DrawableGameComponent.</param>
+            <param name="args">Arguments to the VisibleChanged event.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.OnEnabledChanged(System.Object,System.EventArgs)">
+            <summary>
+            Called when the Enabled property changes. Raises the EnabledChanged event.
+            </summary>
+            <param name="sender">The DrawableGameComponent.</param>
+            <param name="args">Arguments to the VisibleChanged event.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.WindowOrientationChanged(System.Object,System.EventArgs)">
+            <summary>
+            Invoked when the application orientation changes.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.CreateGraphicResources">
+            <summary>
+            Create all global graphic elements associated with the ad manager.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.FreeGraphicResources">
+            <summary>
+            Free all global graphic elements associated with the ad manager.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.UpdateInput">
+            <summary>
+            Update input for all ads.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdManager.OnInputConsumedChanged">
+            <summary>
+            Called when the InputConsumed property changes. Raises InputConsumedChanged event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdManager.ApplicationId">
+            <summary>
+            Gets the application identifier assigned to you during the publisher registration process. See the Publisher On-boarding Guide for more information.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdManager.TestMode">
+            <summary>
+            Gets or sets the test mode option. When test mode is enabled, the manager will receive and display 
+            test ads for testing the ad integration with the application. Test mode should
+            be enabled during application development phase and should be disabled when 
+            application is ready for distribution.
+            </summary>
+            <remarks>This property is true by default in debug builds, and false in release builds.</remarks>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdManager.WindowsLiveANID">
+            <summary>
+            Gets or sets the Windows Live Anonymous Identifier. 
+            </summary>
+            
+            <remarks>
+            If the user is authenticated via Windows Live ID, user's ANID is provided
+            by the authentication server. The WindowsLiveANID is used by Microsoft's Ad Platform
+            for anonymous demographic targeting. 
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdManager.IncomeRange">
+            <summary>
+            Gets or sets the income range of the user of the application.
+            </summary>
+            
+            <seealso cref="T:Microsoft.Advertising.Mobile.Xna.IncomeRange"/>
+            <exception cref="T:System.ArgumentException">Invalid Income range.</exception>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdManager.PostalCode">
+             <summary>
+             Gets or sets the postal code of the user of the application.
+             </summary>
+            
+             <exception cref="T:System.ArgumentException">Invalid Postal Code.</exception>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdManager.Gender">
+            <summary>
+            Gets or sets the gender of the user of the application.
+            </summary>
+            
+            <seealso cref="T:Microsoft.Advertising.Mobile.Xna.Gender"/>
+            <exception cref="T:System.ArgumentException">Invalid gender.</exception>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdManager.BirthDate">
+            <summary>
+            Gets or sets the birth date of the user of the application.
+            </summary>
+            
+            <seealso cref="T:Microsoft.Advertising.Mobile.Xna.BirthDate"/>
+            <exception cref="T:System.ArgumentException">Invalid birth date</exception>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdManager.Country">
+            <summary>
+            Gets or sets the 2-letter country code of the user of the application.
+            </summary>
+            <remarks>The country code uses the ISO 3166-1 standard specified at
+            <a href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm">http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm</a>.</remarks>
+            <exception cref="T:System.ArgumentException">Invalid Country Code.</exception>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdManager.Engaged">
+            <summary>
+            Gets a value indicating whether the user is currently interacting with one of the ads.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdManager.InputConsumed">
+            <summary>
+            Gets a value indicating if the application's input was consumed by an ad.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Advertising.Mobile.Xna.AdManager.EngagedChanged">
+            <summary>
+            Raised when the Engaged property changes.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Advertising.Mobile.Xna.AdManager.InputConsumedChanged">
+            <summary>
+            Raised when the InputConsumed property changes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdManager.Font">
+            <summary>
+            Gets the <see cref="T:Microsoft.Xna.Framework.Graphics.SpriteFont"/> used to draw text portions of ads and associated dialogs.
+            </summary>
+            <remarks>
+            The style of the font is Segoe WP, 18pts, bold.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.AdModel">
+            <summary>
+            The internal Microsoft Advertising system from which the application should receive ads.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdModel.Display_ReservedUseOnly">
+            <summary>
+            (Reserved) Represents the display ad model.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdModel.Contextual">
+            <summary>
+            Represents the contextual ad model.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.NewAdSubscriber">
+            <summary>
+            Delegate to notify the result of a new ad fetch.
+            </summary>
+            <param name="adPlacement">Ad placement for which the notification is fired.</param>
+            <param name="exception">Any exception that occured while fetching the ad. For successful downloaded of an ad, this will be null.</param>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.AdPlacement">
+            <summary>
+            Class: AdPlacement
+            The AdPlacement class represents an ad placement within an application
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestCommonParameterConstant">
+            <summary>
+            Constant parameter(s) attached to the end of every ad request.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestParameterConstantDisplayAd">
+            <summary>
+            Constant parameter(s) attached to the end of every display ad request.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestParameterAdmodel">
+            <summary>
+            Ad model request parameter tag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestParameterPubid">
+            <summary>
+            Publisher ID request parameter tag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestParameterPid">
+            <summary>
+            Placement ID request parameter tag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestParameterType">
+            <summary>
+            Ad type (banner and/or text) request parameter tag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestPamaterWidth">
+            <summary>
+            Placement width request parameter tag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestParameterHeight">
+            <summary>
+            Placement height request parameter tag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestParameterFormatOptions">
+            <summary>
+            Ad image format request parameter tag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestParameterKeywords">
+            <summary>
+            Keywords targeting request parameter tag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestParameterSearchRadius">
+            <summary>
+            Search ad targeting radius request parameter tag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestParameterLocation">
+            <summary>
+            Location request parameter tag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestParameterDeviceId">
+            <summary>
+            Client / Device Id request parameter tag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestParameterANID">
+            <summary>
+            ANID request parameter tag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestValueLocationSeparator">
+            <summary>
+            Location separator value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestValueDelimiter">
+            <summary>
+            Request value delimiter.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestValueImageJpeg">
+            <summary>
+            JPEG image format request value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestValueImagePng">
+            <summary>
+            PNG image format request value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestValueImageGif">
+            <summary>
+            GIF image format request value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestValueTypeBanner">
+            <summary>
+            Banner ad request value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestValueTypeText">
+            <summary>
+            Text ad request value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.HttpRequestConstantLocationOptin">
+            <summary>
+            Request parameter indicating the user has opted in for location targeting.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.StorageRootDirectory">
+            <summary>
+            Root directory for storing data
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.DeviceIdFileName">
+            <summary>
+            File name for storing unique device Id
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.AnidUserPropertyName">
+            <summary>
+            Name of the ANID User property
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.RequestStringBufferSize">
+            <summary>
+            Initial size of request string buffer.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.location">
+            <summary>
+            Stores the current location of the user.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.searchRadius">
+            <summary>
+            Radius for search ads
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.adModel">
+            <summary>
+            Ad Model for this placement.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.appId">
+            <summary>
+            Application ID.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.adUnitId">
+            <summary>
+            Placement ID.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.imageTypes">
+            <summary>
+            Image types the placement supports.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.adTypes">
+            <summary>
+            Ad types the placement supports.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.subscriber">
+            <summary>
+            Subscriber for ad download and error event notifications.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.keywords">
+            <summary>
+            Keywords for targeting associated with this AdPlacement.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.instanceLockObj">
+            <summary>
+            Lock for synchronizing access to instance data.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.webRequestWrapper">
+            <summary>
+            Web request for downloading an ad
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.currentAd">
+            <summary>
+            Current ad instance.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.lastAd">
+            <summary>
+            Last ad instance.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.nextAd">
+            <summary>
+            Instance of ad currently being fetched.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.isDownloadingAd">
+            <summary>
+            Flag to check if an ad is being downloaded or not.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.pendingAdRefreshNotification">
+            <summary>
+            Flag to check if we need to notify the caller on ad refresh or not.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.closed">
+            <summary>
+            Flag to check if the placement has been closed or not.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdPlacement.adRect">
+            <summary>
+            Rectangle defining the size and position of the ad
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdPlacement.#ctor(System.String,System.String,Microsoft.Advertising.Mobile.Xna.AdModel,Microsoft.Advertising.Mobile.Xna.AdType,Microsoft.Advertising.Mobile.Xna.ImageType,Microsoft.Advertising.Mobile.Xna.NewAdSubscriber,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            Private constructor - the public interface exposes a static create method.
+            </summary>
+            <param name="appId">the application ID</param>
+            <param name="adUnitId">the id of the specific ad placement within the application</param>
+            <param name="adModel">the ad model supported by this placement.</param>
+            <param name="adTypes">the types of ad supported by this placement.</param>
+            <param name="imageTypes">types of images supported by a banner ad - ignored for text ads.</param>
+            <param name="subscriber">the subscriber for ad download notifications</param>
+            <param name="adRect">the size of the ad to be retrieved</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdPlacement.CreateAdPlacement(System.String,System.String,Microsoft.Advertising.Mobile.Xna.AdModel,Microsoft.Advertising.Mobile.Xna.AdType,Microsoft.Advertising.Mobile.Xna.ImageType,Microsoft.Advertising.Mobile.Xna.NewAdSubscriber,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            Creates a new AdPlacement with the specified parameters.
+            </summary>
+            <param name="appId">the application ID that has been registered with the ad provider (e.g. "www.msn.com")</param>
+            <param name="adUnitId">the id of the specific ad placement within the application</param>
+            <param name="adModel">the ad model supported by this placement</param>
+            <param name="adTypes">the types of ad supported by this placement. This can be a single
+             value from the values specified in {@link AdType}, or an OR combination of values
+             such as AdType.TEXT | AdType.BANNER.</param>
+            <param name="imageTypes">types of images supported by a banner ad - ignored for text ads.
+             This can be a single type from {@link AdPlacement}, or an OR combination of types
+             such as AdPlacement.IMAGE_TYPE_JPG | AdPlacement.IMAGE_TYPE_PNG.</param>
+            <param name="subscriber">the event handler for ad download notifications</param>
+            <param name="adRect">the size of the ad to be retrieved</param>
+            <returns>the created AdPlacement</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdPlacement.ReportImpression(Microsoft.Advertising.Mobile.Xna.Advertisement)">
+            <summary>
+            Reports an impression on the given ad.
+            </summary>
+            <param name="ad">Advertisement on which to report an impression</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdPlacement.InvalidateAd(Microsoft.Advertising.Mobile.Xna.Advertisement)">
+            <summary>
+            Invalidates the ad
+            </summary>
+            <param name="ad">Advertisement to invalidate.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdPlacement.GetAdvertisement">
+            <summary>
+            Gets the next ad
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdPlacement.Close">
+            <summary>
+            Closes the placement and cancels any pending web requests
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdPlacement.ValidateANID(System.String)">
+            <summary>
+            Validate if the Windows Live ANID has the right format.
+            </summary>
+            <param name="windowsLiveAnid">the Windows Live ANID to be validated</param>
+            <returns>true if ANID is valid, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdPlacement.UpdateGlobalsQueryString">
+            <summary>
+            Construct the global parameter http query string.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdPlacement.ResetGlobalQueryString">
+            <summary>
+            Reset the global parameter http query string
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdPlacement.UrlEncodingNeeded(System.Char)">
+            <summary>
+            Determines if we need to URL encode the input character. This includes check for all unreserved
+            characters as specified in RFC 3986 except '~'.
+            .Net UrEncode seems to encode '~' as well. Also, the AFS source code has the
+            same list of unreserved characters as below
+            </summary>
+            <param name="ch">Character to check for encoding.</param>
+            <returns>'true' if we need to encode the character, 'false' otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdPlacement.UrlEncode(System.String)">
+            <summary>
+            Url Encodes the input string.
+            </summary>
+            <param name="str">String value to encode</param>
+            <returns>the encoded string. If the input is null this function returns null.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdPlacement.AppendDelimitedString(System.Text.StringBuilder,System.String)">
+            <summary>
+            Helper method to form the http request string.
+            </summary>
+            <param name="buffer">Buffer to modify</param>
+            <param name="textToAppend">Text to append</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdPlacement.ConstructAdRequestUrl">
+            <summary>
+            Constructs the Ad request Url.
+            </summary>
+            <returns>Url for the request.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdPlacement.GetAdvertisementInternal(System.Boolean,System.Boolean)">
+            <summary>
+            Returns the current valid ad and if needed, starts the web request for fetching the next ad.
+            </summary>
+            <param name="notifyOnRefresh">Flag to decide if we need to notify the caller when the new ad fetch is complete.</param>
+            <param name="forceDownload">Flag to decide if we need to force download the next ad. This will only work if there is no pending ad download and when we need to 
+            refresh the current ad even though its still valid (like AdControl got re-sized). If the currently pending ad downloads needs to be invalidated as well,
+            the caller should cancel them before calling this function.</param>
+            <returns>Current valid ad.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdPlacement.WebRequestComplete(Microsoft.Advertising.Mobile.Xna.WebRequestWrapper)">
+            <summary>
+            Notification called whenever metadata is downloaded for the new ad.
+            <param name="request">Webrequest that got completed</param>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdPlacement.AdDownloadComplete(Microsoft.Advertising.Mobile.Xna.Advertisement,Microsoft.Advertising.Mobile.Xna.AdException)">
+            <summary>
+            Notification called when all the data has been downloaded for an ads. for e.g. when
+            all the images have been downloaded for a bannerad
+            <param name="ad">Ad that got downloaded</param>
+            <param name="ex">Any exception that occureded while downloading the ad</param>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.GlobalDataQueryString">
+            <summary>
+            Global parameters query string shared by all Ad Placements.
+            MAP 5.0 compatible.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.Locale">
+            <summary>
+            Locale targeting param shared by all Ad Placements.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.DeviceId">
+            <summary>
+            Client / Device ID, must be in GUID format.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.AdServerUrl">
+            <summary>
+            The URL of the Ad Delivery Server shared by all Ad Placements.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.Gender">
+            <summary>
+            Gender targeting param shared by all Ad Placements
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.BirthDate">
+            <summary>
+            Birth date targeting param shared by all Ad Placements.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.IncomeRange">
+            <summary>
+            Income Range targeting param shared by all Ad Placements.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.TestMode">
+            <summary>
+            Test mode property shared by all Ad Placements.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.PostalCode">
+            <summary>
+            Postal Code targeting param shared by all Ad Placements.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.Country">
+            <summary>
+            Country targeting param shared by all Ad Placements.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.WindowsLiveANID">
+            <summary>
+            Windows Live ANID targeting param shared by all Ad Placements.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.SearchRadius">
+            <summary>
+            Search radius for local search ads
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.Location">
+            <summary>
+            Current user location
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.Keywords">
+            <summary>
+            Keywords for search ads and contextual ads
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.AdRect">
+            <summary>
+            Ad size is the same as the placement size. The actual size
+            of the ads should be smaller or equal to this size to be displayed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.AppId">
+            <summary>
+            Application Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.AdUnitId">
+            <summary>
+            Placement Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.ImageTypes">
+            <summary>
+            Image types supported by this placement
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.AdTypes">
+            <summary>
+            Ad types supported by this placement
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdPlacement.AdModel">
+            <summary>
+            Ad model of this placement
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.AdRendererButton">
+            <summary>
+            Manage clicking ads with a button
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdRendererButton.#ctor(Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="rect">Rectangle outlining the button.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdRendererButton.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,System.Single,Microsoft.Advertising.Mobile.Xna.AdTextureSet)">
+            <summary>
+            Draw the button
+            </summary>
+            <param name="spriteBatch">The batch of sprites to render graphical elements with.</param>
+            <param name="opacity">The opacity of the graphical elements.</param>
+            <param name="textures">Texture properties used to render.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdRendererButton.OnActivate">
+            <summary>
+            Called when the button is activated
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.AdRenderer">
+            <summary>
+            Called when the button is activated
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdRenderer.FrameFadeTimeInMilliseconds">
+            <summary>
+            The number of seconds each fade lasts
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdRenderer.FrameTimeInMilliseconds">
+            <summary>
+            The number of seconds each frame lasts
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdRenderer.InvalidFrameIndex">
+            <summary>
+            Invalid frame identifier
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdRenderer.GradientPrecision">
+            <summary>
+            Create a gradient background texture. The gradient is smoother the 
+            higher this precision is.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdRenderer.Create(Microsoft.Advertising.Mobile.Xna.Advertisement,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteFont,Microsoft.Xna.Framework.Graphics.GraphicsDevice,Microsoft.Advertising.Mobile.Xna.AdTextureSet)">
+            <summary>
+            Factory function to create the correct type of ad renderer
+            </summary>
+            <param name="ad">The ad to render</param>
+            <param name="rect">The rectange to render the ad in.</param>
+            <param name="font">The font to render any text portions of the ad with.</param>
+            <param name="graphicDevice">Graphic device used for rendering.</param>
+            <param name="textures">The common set of shared textures used for rendering.</param>
+            <returns>The created ad renderer.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdRenderer.#ctor(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteFont,Microsoft.Xna.Framework.Graphics.GraphicsDevice,Microsoft.Advertising.Mobile.Xna.AdTextureSet)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="rect">The rectange to render the ad in.</param>
+            <param name="font">The font to render any text portions of the ad with.</param>
+            <param name="graphicDevice">Graphic device used for rendering.</param>
+            <param name="textures">The common set of shared textures used for rendering.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdRenderer.Initialize">
+            <summary>
+            Intialize the renderer
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdRenderer.Dispose">
+            <summary>
+            Immediately releases the unmanaged resources used by this object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdRenderer.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Allows the renderer to update itself.
+            </summary>
+            <param name="gameTime">Provides a snapshot of timing values.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdRenderer.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,System.Boolean,System.Boolean,Microsoft.Xna.Framework.Color)">
+            <summary>
+            Draw the ad according to the input parameters.
+            </summary>
+            <param name="spriteBatch">Batch fo sprites to use for rendering.</param>
+            <param name="drawShadow">Whether to render a drop shadow "under" the ad.</param>
+            <param name="drawBorder">Whether to render a solid-color border around the ad.</param>
+            <param name="borderColor">The color of the border to use.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdRenderer.DrawFrame(System.Int32,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteFont)">
+            <summary>
+            Draw the specified frame 
+            </summary>
+            <param name="frameIndex">The index of the frame to render.</param>
+            <param name="color">The color to tint rendering. Use Color.White for full color with no tinting.</param>
+            <param name="spriteBath">Batch fo sprites to use for rendering.</param>
+            <param name="rect">Position and size data to render.</param>
+            <param name="font">The font to render text portions of the ad with.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdRenderer.ContentFits(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteFont)">
+            <summary>
+            Indicates if the current supplied data can be correctly rendered.
+            </summary>
+            <param name="rect">Position and size data for the ad.</param>
+            <param name="font">The font any text will be rendered in.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdRenderer.ReleaseResources">
+            <summary>
+            Dispose of all resources created by the renderer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdRenderer.GetRenderedRectangle">
+            <summary>
+            Get the rectangle that was rendered to.
+            </summary>
+            <returns>A new rectangle defining the region that was rendered.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdRenderer.OnResize">
+            <summary>
+            Invoked when the space allocated to the renderer has been resized.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdRenderer.Valid">
+            <summary>
+            Gets a value indicating if the renderer is valid given the supplied data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdRenderer.Rect">
+            <summary>
+            The rectangle to render the button in
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdRenderer.Height">
+            <summary>
+            The height of the rendered area
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdRenderer.Width">
+            <summary>
+            The width of the rendered area
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdRenderer.Font">
+            <summary>
+            The font to render the ad with
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdRenderer.Button">
+            <summary>
+            The interaction button for the ad
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdRenderer.FrameCount">
+            <summary>
+            Number of frames to render
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdRenderer.Paused">
+            <summary>
+            Number of frames to render
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.AdTextType">
+            <summary>
+            Represents the types of text that can be accessed for an ad
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdTextType.Unknown">
+            <summary>
+            Default value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdTextType.Title">
+            <summary>
+            For retrieving title text
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdTextType.Description">
+            <summary>
+            For retrieving description text
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdTextType.BusinessName">
+            <summary>
+            For retrieving business name text
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdTextType.DomainName">
+            <summary>
+            For retrieving domain name text
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.AdTextureSet">
+            <summary>
+            The set of textures to use for rendering.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdTextureSet.#ctor(Microsoft.Xna.Framework.Graphics.GraphicsDevice,Microsoft.Xna.Framework.Content.ContentManager)">
+            <summary>
+            Create the set of texture
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdTextureSet.Dispose">
+            <summary>
+            Free the texture resources
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdTextureSet.DarkIconTextures">
+            <summary>
+            The set of dark icon textures
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdTextureSet.LightIconTextures">
+            <summary>
+            The set of light icon textures
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdTextureSet.AdBackgroundTexture">
+            <summary>
+            The background texture used to render ads
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdTextureSet.WhiteTexture">
+            <summary>
+            Solid white texture
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdTextureSet.BorderThickness">
+            <summary>
+            The thickness of button borders
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdTextureSet.BackgroundColor">
+            <summary>
+            The background theme color.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdTextureSet.BorderColor">
+            <summary>
+            The Colors to paint borders.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdTextureSet.SemiTransparentColor">
+            <summary>
+            The color to use when rendering semi-transparent.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.AdTextureSet.IconTextures">
+            <summary>
+            Set of icon textures
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdTextureSet.IconTextures.Dispose">
+            <summary>
+            Free the texture resources
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdTextureSet.IconTextures.CircleIconTexture">
+            <summary>
+            Circle texture used to border other icons
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdTextureSet.IconTextures.CancelIconTexture">
+            <summary>
+            The icon associated with the cancel action
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdTextureSet.IconTextures.WebIconTexture">
+            <summary>
+            The icon associated with the click-to-web action
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdTextureSet.IconTextures.CallIconTexture">
+            <summary>
+            The icon associated with the click-to-cll action
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.AdType">
+            <summary>
+            Type of ad that gets downloaded. The values can be combined using an OR operator ( | ). For example, AdType.Banner | AdType.Text.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdType.Unknown">
+            <summary>
+            Represent a default value for Ad Type where no ad type is specified.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdType.Text">
+            <summary>
+            Represent a text Ad Type
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdType.Banner">
+            <summary>
+            Represent a banner Ad type with banner image
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.AdType.All">
+            <summary>
+            Represent an Ad type where any ad type is allowed
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.AdDownloadCompleteCallback">
+            <summary>
+            Delegate to notify the completion of ad download. This is fired for ads that have 
+            images or secondary data that needs to be downloaded asynchronously.
+            </summary>
+            <param name="ad">Ad that got downloaded.</param>
+            <param name="exception">Any exception that occured while fetching ad. 'ad' is null if there is any exception.</param>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.Advertisement">
+            <summary>
+            An Advertisement is a base class for all types of ads. It regroups all common properties
+            and methods for advertisements.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.AdResponseTagName">
+            <summary>
+            Various tag names and values in AdResponse from the back-end
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.ImpressionURLSuffix1">
+            <summary>
+            Impression URL Suffixes for search Ad
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.MaxImpressionReportNumber">
+            <summary>
+            Count of max number of impressions
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.DefaultTTLMinutes">
+            <summary>
+            Default TTL for an Ad in minutes
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.PhoneUrlPrefix">
+            <summary>
+            Other constants
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.lockObj">
+            <summary>
+            Lock for critical sections
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.closed">
+            <summary>
+            ad is closed or not
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.expirationTime">
+            <summary>
+            Ad expiration time
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.adType">
+            <summary>
+            Type of Ad
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.clickToBrowseURL">
+            <summary>
+            Click to browse URL
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.clickToBrowseLabel">
+            <summary>
+            Click to browse Label
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.impressionURLs">
+            <summary>
+            Array of impression URLs
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.clickToCallURL">
+            <summary>
+            Click to call number
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.clickToCallLabel">
+            <summary>
+            Click to call label
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.clickToCallImpURL">
+            <summary>
+            Click to call impression Url
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.advertiserLocation">
+            <summary>
+            Location asset information for the ad
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.impressionAttempted">
+            <summary>
+            Flag to denote if the impression reporting has already been attempted for the ad or not.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.impressionReportingRequestWrapper">
+            <summary>
+            Wrapper for impression reporting requests
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Advertisement.clickToCallReportingRequestWrapper">
+            <summary>
+            Wrapper for click-to-call reporting requests
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Advertisement.#ctor(System.String,System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            Advertisement constructor.
+            </summary>
+            <param name="adTTL">time to live.</param>
+            <param name="adType">type of ad.</param>
+            <param name="adNode">JSON node containing complete ad information.</param>
+            <param name="eventNode">JSON node containing information for impression/event report.</param>
+            <param name="assetNode">JSON node containing creative assets information.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Advertisement.CreateAdvertisement(System.String,Microsoft.Advertising.Mobile.Xna.AdDownloadCompleteCallback)">
+            <summary>
+            Factory method for creating an ad out of a JSON node.
+            </summary>
+            <param name="jsonResponse">JSON string with ad data.</param>
+            <param name="adDownloadCompleteCallback">Callback to notify when the ad download is complete for asynchronous ad.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Advertisement.Close">
+            <summary>
+            Release resources allocated for this ad upon disposing
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Advertisement.IsActionSupported(Microsoft.Advertising.Mobile.Xna.Action)">
+            <summary>
+            Verifies if a particular action is supported within the context of this ad.
+            </summary>
+            <param name="action">Action to test.</param>
+            <returns>true or false if the action is supported for this type of ad.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Advertisement.GetActionUrl(Microsoft.Advertising.Mobile.Xna.Action)">
+            <summary>
+            Gets the URL for the action.
+            </summary>
+            <param name="action">Action for which the URL is requested.</param>
+            <returns>The action url for click to browse and click to call actions, an empty string otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Advertisement.DoAction(Microsoft.Advertising.Mobile.Xna.Action)">
+            <summary>
+            Performs the specified action on the ad, if the ad supports it.
+            </summary>
+            <param name="action">Action to perform.</param>
+            <remarks>Currently it only supports click to call and click to browse actions.</remarks>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Advertisement.ReportImpression">
+            <summary>
+            Report impression
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Advertisement.ReportClickToCall">
+            <summary>
+            Report Click-to-Call
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Advertisement.GetImpressionUrlSuffix(System.String,System.Object)">
+            <summary>
+            Constructs the impression URL suffix.
+            </summary>
+            <param name="adType">Ad Type.</param>
+            <param name="adNode">JSON Node for the ad.</param>
+            <returns>Impression URL suffix.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Advertisement.AppendImpressionUrlSuffix(System.String,System.String)">
+            <summary>
+            Appends the impression URL suffix to the URL.
+            </summary>
+            <param name="impressionUrl">Impression URL.</param>
+            <param name="impressionUrlSuffix">Suffix value.</param>
+            <returns>Impression URL with suffix appended.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Advertisement.IsValidAction(Microsoft.Advertising.Mobile.Xna.Action)">
+            <summary>
+            Checks if the specified action is valid or not.
+            </summary>
+            <param name="action">Action to validate.</param>
+            <returns>true or false if the action is valid or not.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Advertisement.GetAdType(System.String)">
+            <summary>
+             Gets the type of ad.
+            </summary>
+            <param name="adType">string value for adType.</param>
+            <returns> ad type (from AdType).</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Advertisement.SetAdExpirationMillis(System.String)">
+            <summary>
+             Sets the ad expiry time.
+            </summary>
+            <param name="adTTLMin">Time to live value for ad in minutes.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Advertisement.ImpressionReportingCallback(Microsoft.Advertising.Mobile.Xna.WebRequestWrapper)">
+            <summary>
+            An empty callback for calling WebRequestWapper.SendAsyncRequest
+            </summary>
+            <param name="request">The request corresponding to this response</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Advertisement.ClickToCallReportingCallback(Microsoft.Advertising.Mobile.Xna.WebRequestWrapper)">
+            <summary>
+            An empty callback for calling WebRequestWapper.SendAsyncRequest
+            </summary>
+            <param name="request">The request corresponding to this response</param>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Advertisement.ImpressionAttempted">
+            <summary>
+            Gets/Sets the flag indicating if the impression reporting has been attempted or not.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Advertisement.ClickToBrowseLabel">
+            <summary>
+            Gets Click to browse label.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Advertisement.ClickToCallLabel">
+            <summary>
+            Gets Click to call label.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Advertisement.AdvertiserLocation">
+            <summary>
+            Gets Location asset information for the advertiser.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Advertisement.Expired">
+            <summary>
+            Checks if the Ad is expired or not.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.BannerAd">
+            <summary>
+            A BannerAd is an advertisement displaying an image within an ad placement.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.BannerAd.ImageTagName">
+            <summary>
+            Image tag name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.BannerAd.imageAsset">
+            <summary>
+            Image asset
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.BannerAd.webRequestWrapper">
+            <summary>
+            Web request for downloading the image
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.BannerAd.adDownloadCompleteCallback">
+            <summary>
+            Callback to notify the result of image download
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.BannerAd.lockObj">
+            <summary>
+            Lock Object for synchronization
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.BannerAd.#ctor(System.String,System.String,System.Object,System.Object,System.Object,Microsoft.Advertising.Mobile.Xna.AdDownloadCompleteCallback)">
+            <summary>
+            Constructor for BannerAd.
+            </summary>
+            <param name="adTTL">Time to live for ad.</param>
+            <param name="adType">Type of ad.</param>
+            <param name="adNode">JSON node containing complete ad information.</param>
+            <param name="eventNode">JSON node containing information for impression/event report.</param>
+            <param name="assetNode">JSON node containing creative assets information.</param>
+            <param name="adDownloadCompleteCallback">Callback to notify when the image download is complete.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.BannerAd.WebRequestComplete(Microsoft.Advertising.Mobile.Xna.WebRequestWrapper)">
+            <summary>
+            Callback function to revieve the result of the image download.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.BannerAd.Close">
+            <summary>
+            Cancels any pending web requests and closes the ad.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.BannerAd.AlternateText">
+            <summary>
+            Gets the Alternate Text for image.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.BannerAd.ImageType">
+            <summary>
+            Gets the ImageType value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.BannerAd.Image">
+            <summary>
+            Gets the Image buffer value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.BannerAd.ImageHeight">
+            <summary>
+            Gets the Image Height value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.BannerAd.ImageWidth">
+            <summary>
+            Gets the Image Width value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.BannerAd.ImageUrl">
+            <summary>
+            Gets the image url
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.BirthDate">
+            <summary>
+            The birth month and year of the user as a demographic targeting parameter.
+            </summary>
+            
+            <remarks>
+            The value 0 is used for the year and the month if the birth date is not known.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.BirthDate.#ctor(System.UInt32,System.UInt32)">
+            <summary>
+            Initialize a birth date.
+            </summary>
+            <param name="year">Birth year of the user on 4 digits (e.g. 1970)</param>
+            <param name="month">Birth month of the user between 1 for January to 12 for December</param>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.BirthDate.Year">
+            <summary>
+            Gets or sets the birth year of the user on 4 digits (e.g. 1970)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.BirthDate.Month">
+            <summary>
+            Gets or sets the birth month of the user between 1 for January to 12 for December
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.AdGenerator">
+            <summary>
+            Manages the asynchronous task of generating the resource-heavy
+            ad renderer and action handler
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdGenerator.#ctor(Microsoft.Advertising.Mobile.Xna.Advertisement,Microsoft.Advertising.Mobile.Xna.Ad)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="advertisement">The associated core library advertisement object.</param>
+            <param name="ad">The ad to generate.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.AdGenerator.Generate">
+            <summary>
+            Generate the ad from the supplied components
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.AdGenerator.Complete">
+            <summary>
+            Whether the fetch is complete
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.RotationMode">
+            <summary>
+            Enumeration of the behavior types an ad uses to download new advertising data (text, image, etc).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.RotationMode.Automatic">
+            <summary>
+            Ad refreshes itself automatically, at a fixed frequency defined internally.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.RotationMode.Manual">
+            <summary>
+            Ad must be refreshed manually by calling Ad.RequestNextAd.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.Ad">
+            <summary>
+            Represents an individual ad within the context of an Xna application.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Ad.SecondsPerMinute">
+            <summary>
+            The number of seconds in a minute
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Ad.AdRotationTimeInSeconds">
+            <summary>
+            Constant for Ad rotation time, currently is equal to one minute
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.RequestNextAd">
+            <summary>
+            When automatic rotation is disabled, a call to this method
+            directs the ad to show the next ad creative as soon as it
+            becomes available.
+            </summary>
+            
+            <remarks>
+            No ad might be available because an error occurred trying to contact the ad platform.
+            </remarks>
+            
+            <exception cref="T:System.InvalidOperationException">Automatic Ad Rotation Enabled.</exception>
+            <exception cref="T:System.InvalidOperationException">The ad is engaged.</exception>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Ad.MinimumWidth">
+            <summary>
+            The minimum accepted width for an ad.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Ad.MinimumHeight">
+            <summary>
+            The minimum accepted height for an ad.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Ad.MinLatitude">
+            <summary>
+            Location ranges permitted
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.#ctor(Microsoft.Advertising.Mobile.Xna.AdManager,System.String,Microsoft.Advertising.Mobile.Xna.AdModel,Microsoft.Xna.Framework.Rectangle,Microsoft.Advertising.Mobile.Xna.RotationMode)">
+            <summary>
+            Constructor for ad.
+            </summary>
+            <param name="adManager">The parent AdManager.</param>
+            <param name="adUnitId">The id of the specific ad placement within the application</param>
+            <param name="adModel">The ad model supported by this placement</param>
+            <param name="adRect">The size of the ad to be retrieved</param>
+            <param name="rotationMode">The rotation behavior of the ad.</param>
+            <returns>the created Ad</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.ReleaseResources">
+            <summary>
+            Dispose of all resources created by the renderer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.ValidateRectangle(Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            See if the rectangle fits within predefined constraints
+            </summary>
+            <param name="value">The rectangle to validate.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Allows the game component to update itself.
+            </summary>
+            <param name="gameTime">Provides a snapshot of timing values.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Renders the ad
+            </summary>
+            <param name="spriteBatch">The sprite batch used to render the ad.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.DrawInteraction(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Renders the any interaction menu for the ad
+            </summary>
+            <param name="spriteBatch">The sprite batch used to render the ad.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.HandleInput(Microsoft.Xna.Framework.Input.MouseState)">
+            <summary>
+            Take action when a mouse click is detected
+            </summary>
+            <param name="mouseState">The current input state.</param>
+            <returns>Whether this ad consumed the input.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.Initialize">
+            <summary>
+            Allows the game component to perform any initialization it needs to before starting
+            to run.  This is where it can query for any required services and load content.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.ForceDisengage">
+            <summary>
+            Forcefully disengage the ad.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.OnOrientationChanged(Microsoft.Xna.Framework.Graphics.Viewport)">
+            <summary>
+            Invoked when the orientation of the phone changes
+            </summary>
+            <param name="viewport">The game viewport.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.OnParentVisibilityChanged">
+            <summary>
+            Called when the Visible property of the manager changes
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.OnParentEnabledChanged">
+            <summary>
+            Called when the Enabled property of the manager changes
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.BeginGenerateNextAd">
+            <summary>
+            Start generating the next available ad
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.AdDownloadComplete(Microsoft.Advertising.Mobile.Xna.AdPlacement,Microsoft.Advertising.Mobile.Xna.AdException)">
+            <summary>
+            Handle the AdDownload complete events
+            </summary>
+            <param name="adPlacement">The adplacement instance</param>
+            <param name="exception">Exception when AdDownload is failed.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.PauseTimer">
+            <summary>
+            Pause the timer and set the next timer interval to the remaining time
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.StartTimer">
+            <summary>
+            Start the timer with whatever the interval is set.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.BroadcastErrorEvent(Microsoft.Advertising.Mobile.Xna.ErrorCode,System.String)">
+            <summary>
+            Helper method that broadcasts error events to any listeners
+            </summary>
+            <param name="errorCode">Error code</param>
+            <param name="errorDescription">Error description</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.BroadcastNewAdEvent">
+            <summary>
+            Helper method that broadcasts new ad events to any listeners
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.RotateAd">
+            <summary>
+            Private event handler on Ad rotation timer event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.EngageAd">
+            <summary>
+            Attempt to engage the ad
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.OnDisengaged(System.Object,Microsoft.Advertising.Mobile.Xna.ActionHandlerEventArgs)">
+            <summary>
+            Attempt to disengage the ad
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.OnVisibleChanged">
+            <summary>
+            Handle the VisibleChanged event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.RecreateGraphics(System.Int32,System.Int32)">
+            <summary>
+            Recreate graphical elements based on screen size
+            </summary>
+            <param name="width">The screen width in pixel.</param>
+            <param name="height">The screen height in pixel.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.OnDimensionsChanged">
+            <summary>
+            Called when dimensions of the ad changed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.HandleAdGeneration">
+            <summary>
+            Synchronous call to manage asynchronous ad generation
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.HandleGenerationSuccess(Microsoft.Advertising.Mobile.Xna.AdGenerator)">
+            <summary>
+            Set up all the data from the ad generator when successful
+            </summary>
+            <param name="generator">The ad generator.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.HandleGenerationFailure(Microsoft.Advertising.Mobile.Xna.AdGenerator,Microsoft.Advertising.Mobile.Xna.AdException)">
+            <summary>
+            Recover from generation failure
+            </summary>
+            <param name="generator">The ad generator.</param>
+            <param name="adException">The caught exception.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.RecordImpression">
+            <summary>
+            Attempt to record an impression for the ad
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Ad.ResetInput">
+            <summary>
+            Reset all input-related state
+            </summary>
+        </member>
+        <member name="E:Microsoft.Advertising.Mobile.Xna.Ad.EngagedChanged">
+            <summary>
+            Raised when the Engaged property changes
+            </summary>
+        </member>
+        <member name="E:Microsoft.Advertising.Mobile.Xna.Ad.ErrorOccurred">
+            <summary>
+            Raised when the ad encounters an exception or error
+            </summary>
+        </member>
+        <member name="E:Microsoft.Advertising.Mobile.Xna.Ad.NewAdAcquired">
+            <summary>
+            Raised when a new ad becomes available
+            </summary>
+        </member>
+        <member name="E:Microsoft.Advertising.Mobile.Xna.Ad.VisibleChanged">
+            <summary>
+            Raised when the Visible property changes value
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Ad.SelectionKeywords">
+            <summary>
+            Gets or sets the keywords that provide the context within the application. Keywords are instrumental in targeting ads.
+            </summary>
+            
+            <exception cref="T:System.ArgumentException">AdSelectionKeywords cannot exceed the maximum allowed length.</exception>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Ad.Location">
+            <summary>
+            Gets or sets the ad search area information for the ad.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Ad.SearchRadius">
+            <summary>
+            Gets or sets the ad search radius information for the ad.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Ad.UnitId">
+            <summary>
+            Gets the unit id for the ad.
+            </summary>
+            
+            <remarks>
+            This property is set at the time construction and cannot be modified. This value is provided to the publisher as part of their ad configuration process. See the Publisher On-boarding Guide for more information.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Ad.Premium">
+            <summary>
+            Gets a value indicating whether the ad is premium.
+            </summary>
+            <remarks>
+            The default value is false. Premium ads require additional setup with your account manager, and should only be used under specific circumstances.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Ad.Engaged">
+            <summary>
+            Gets a value indicating whether the ad is currently engaged by the user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Ad.RotationMode">
+            <summary>
+            Gets the <see cref="P:Microsoft.Advertising.Mobile.Xna.Ad.RotationMode"/> of the ad.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Ad.DisplayRectangle">
+            <summary>
+            Gets or sets the rectangle in which the ad will be rendered.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Ad.Visible">
+            <summary>
+            Gets or sets a value indicating whether the ad is to be displayed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Ad.DrawDropShadow">
+            <summary>
+            Gets or sets a value indicating whether a drop shadow should be drawn under the ad.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Ad.DrawBorder">
+            <summary>
+            Gets or sets a value indicating whether a border should be overlayed on the ad.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Ad.BorderColor">
+            <summary>
+            Gets or sets the color of the border to be overlayed on the ad.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Ad.Manager">
+            <summary>
+            Access the ads parent manager
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.GifAdRenderer.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Allows the renderer to update itself.
+            </summary>
+            <param name="gameTime">Provides a snapshot of timing values.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.GifAdRenderer.DrawFrame(System.Int32,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteFont)">
+            <summary>
+            Draw the specified frame 
+            </summary>
+            <param name="frameIndex">The index of the frame to render.</param>
+            <param name="color">The color to tint rendering. Use Color.White for full color with no tinting.</param>
+            <param name="spriteBatch">Batch of sprites to use for rendering.</param>
+            <param name="rect">Position and size data to render.</param>
+            <param name="font">The font to render text portions of the ad with.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.GifAdRenderer.ContentFits(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteFont)">
+            <summary>
+            Indicates if the current supplied data can be correctly rendered.
+            </summary>
+            <param name="rect">Position and size data for the ad</param>
+            <param name="font">The font which would be used to render text elements.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.GifAdRenderer.ReleaseResources">
+            <summary>
+            Immediately releases the unmanaged resources used by this object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.GifAdRenderer.AnimationComplete">
+            <summary>
+            Determine if the gif is finished looping.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.GifAdRenderer.FrameCount">
+            <summary>
+            Number of frames to render.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.GifAdRenderer.Height">
+            <summary>
+            The height of the rendered area
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.GifAdRenderer.Width">
+            <summary>
+            The width of the rendered area
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.RenderingHelp">
+            <summary>
+            Helper functionality for rendering
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.RenderingHelp.CreateVerticalGradientTexture(Microsoft.Xna.Framework.Graphics.GraphicsDevice,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Color,System.Int32)">
+            <summary>
+            Create a vertical gradient texture
+            </summary>
+            <param name="graphicDevice">The graphic device used for rendering.</param>
+            <param name="topColor">The Color at the top of the texture.</param>
+            <param name="bottomColor">The color at the bottom of the texture.</param>
+            <param name="gradientPrecision">The precision to use.</param>
+            <returns>The gradient texture.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.RenderingHelp.CreateSolidtexture(Microsoft.Xna.Framework.Graphics.GraphicsDevice,Microsoft.Xna.Framework.Color)">
+            <summary>
+            Create a solid color texture.
+            </summary>
+            <param name="graphicDevice">The graphic device used for rendering.</param>
+            <param name="color">The Color of the texture.</param>
+            <returns>The new texture.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.RenderingHelp.Ellipsize(System.String,Microsoft.Xna.Framework.Graphics.SpriteFont,System.Int32)">
+            <summary>
+            Trucate string to the input length adding ellipsis at the end
+            </summary>
+            <param name="originalString">The string to trucate.</param>
+            <param name="font">Font the string will be rendered with.</param>
+            <param name="length">Maximum length of string</param>
+            <returns>Trucated string.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.RenderingHelp.ToXnaColor(System.Windows.Media.Color)">
+            <summary>        
+            Converts a System.Windows.Media.Color into a pre-multiplied alpha Microsoft.Xna.Framework.Color suitable        
+            for drawing with.        
+            </summary>        
+            <param name="color">The System.Windows.Media.Color to be converted.</param>        
+            <returns>The XNA 4.0 pre-multiplied alpha version of <paramref name="color"/></returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.RenderingHelp.CenterWithin(Microsoft.Xna.Framework.Rectangle,System.Int32,System.Int32)">
+            <summary>
+            Return a rectangle of the specified dimensions within the input rectangle
+            </summary>
+            <param name="rect">The area to center in.</param>
+            <param name="width">Width of the new rectangle.</param>
+            <param name="height">Height of the new rectangle.</param>
+            <returns>The centered rectangle.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.RenderingHelp.DrawShadow(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            Draw a shadow for the specified rectangle
+            </summary>
+            <param name="spriteBatch">Batch used for rendering.</param>
+            <param name="whiteTexture">TExture to render with.</param>
+            <param name="rect">The rectangle to create a shadow for.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.RenderingHelp.DrawBorder(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Color)">
+            <summary>
+            Draw a border for the specified rectangle
+            </summary>
+            <param name="spriteBatch">Batch used for rendering.</param>
+            <param name="whiteTexture">TExture to render with.</param>
+            <param name="rect">The rectangle to create a shadow for.</param>
+            <param name="borderColor">The color of the border.</param>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.RenderingHelp.ConversionTable">
+            <summary>
+            Conversion table mapping unsupported characters to supported ones
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.RenderingHelp.ExtraSupportedCharacters">
+            <summary>
+            The non-ascii characters that can be rendered without conversion.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.RenderingHelp.SupportedAsciiRangeStart">
+            <summary>
+            The beginning of the supported ascii range.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.RenderingHelp.SupportedAsciiRangeEnd">
+            <summary>
+            The end of the supported ascii range.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.RenderingHelp.IsSupported(System.Char)">
+            <summary>
+            Indicates if a character is supported for rendering.
+            </summary>
+            <param name="c">The character in question.</param>
+            <returns>A value indicating if the character is supported.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.RenderingHelp.ConvertStringToSupportedFormat(System.String)">
+            <summary>
+            Convert a string which may contain unsuported characters to a string that is renderable.
+            </summary>
+            <param name="original">The original string.</param>
+            <returns>The fully supported string.</returns>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.TextAdRenderer">
+            <summary>
+            Class used to render a text ad.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.TextAdRenderer.TextPadding">
+            <summary>
+            Padding for text
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.TextAdRenderer.#ctor(Microsoft.Advertising.Mobile.Xna.TextAd,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteFont,Microsoft.Xna.Framework.Graphics.GraphicsDevice,Microsoft.Advertising.Mobile.Xna.AdTextureSet)">
+            <summary>
+            Draw the ad according to the input parameters.
+            </summary>
+            <param name="ad">The text ad that should be rendered.</param>
+            <param name="rect">The rectange to render the ad in.</param>
+            <param name="font">The font to render any text portions of the ad with.</param>
+            <param name="graphicDevice">Graphic device used for rendering.</param>
+            <param name="textures">The common set of shared textures used for rendering.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.TextAdRenderer.DrawFrame(System.Int32,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteFont)">
+            <summary>
+            Draw the specified frame 
+            </summary>
+            <param name="frameIndex">The index of the frame to render.</param>
+            <param name="color">The color to tint rendering. Use Color.White for full color with no tinting.</param>
+            <param name="spriteBatch">Batch fo sprites to use for rendering.</param>
+            <param name="rect">Position and size data to render.</param>
+            <param name="font">The font to render text portions of the ad with.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.TextAdRenderer.ContentFits(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteFont)">
+            <summary>
+            Indicates if the current supplied data can be correctly rendered.
+            </summary>
+            <param name="rect">Position and size data for the ad</param>
+            <param name="font">The font used to render text.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.TextAdRenderer.GetSize(System.Collections.Generic.List{Microsoft.Advertising.Mobile.Xna.TextLine[]},Microsoft.Xna.Framework.Graphics.SpriteFont)">
+            <summary>
+            Determines the size required to render the set of text lines
+            </summary>
+            <param name="lineList">The list of lists of texts lines to calculate the size of.</param>
+            <param name="font">The font used to render the text.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.TextAdRenderer.GetSize(Microsoft.Advertising.Mobile.Xna.TextLine[],Microsoft.Xna.Framework.Graphics.SpriteFont)">
+            <summary>
+            Determines the size required to render the set of text lines
+            </summary>
+            <param name="lines">The list of lines what will be displayed.</param>
+            <param name="font">The font used to render the text.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.TextAdRenderer.SplitMultipleLines(System.String,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteFont,System.Boolean)">
+            <summary>
+            Split the input string into multiple lines that fit into the input rectangle.
+            </summary>
+            <param name="originalString">The string to split.</param>
+            <param name="rect">Position and size data for the ad.</param>
+            <param name="font">The font that will be used for rendering.</param>
+            <param name="ellipsize">Whether to cap the last line length and ellipsize it.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.TextAdRenderer.RemovePadding(Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            Remove padding from the input rectangle
+            </summary>
+            <param name="rect">The original rectangle.</param>
+            <returns>The unpadded rectangle</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.TextAdRenderer.CreateTextLines(Microsoft.Advertising.Mobile.Xna.TextAd,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteFont)">
+            <summary>
+            Create a list of text line lists for the given ad.
+            </summary>
+            <param name="ad">The ad to create the text lines for.</param>
+            <param name="rect">The rectangle the ad must be rendered into.</param>
+            <param name="font">The font used to render the text.</param>
+            <returns>The list of lists of lines.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.TextAdRenderer.OnResize">
+            <summary>
+            Invoked when the space allocated to the renderer has been resized.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.TextAdRenderer.ReleaseResources">
+            <summary>
+            Immediately releases the unmanaged resources used by this object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.TextAdRenderer.FrameCount">
+            <summary>
+            Number of frames to render
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.TextAdRenderer.Height">
+            <summary>
+            The height of the rendered area
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.TextAdRenderer.Width">
+            <summary>
+            The width of the rendered area
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.ImageAdRenderer">
+            <summary>
+            Class used to render an image ad.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ImageAdRenderer.#ctor(Microsoft.Advertising.Mobile.Xna.BannerAd,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteFont,Microsoft.Xna.Framework.Graphics.GraphicsDevice,Microsoft.Advertising.Mobile.Xna.AdTextureSet)">
+            <summary>
+            Draw the ad according to the input parameters.
+            </summary>
+            <param name="ad">The banner ad that should be rendered.</param>
+            <param name="rect">The rectange to render the ad in.</param>
+            <param name="font">The font to render any text portions of the ad with.</param>
+            <param name="graphicDevice">Graphic device the renderer uses.</param>
+            <param name="textures">The common set of shared textures used for rendering.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ImageAdRenderer.DrawFrame(System.Int32,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteFont)">
+            <summary>
+            Draw the specified frame 
+            </summary>
+            <param name="frameIndex">The index of the frame to render.</param>
+            <param name="color">The color to tint rendering. Use Color.White for full color with no tinting.</param>
+            <param name="spriteBath">Batch fo sprites to use for rendering.</param>
+            <param name="rect">Position and size data to render.</param>
+            <param name="font">The font to render text portions of the ad with.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ImageAdRenderer.ContentFits(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SpriteFont)">
+            <summary>
+            Indicates if the current supplied data can be correctly rendered.
+            </summary>
+            <param name="rect">Position and size data for the ad</param>
+            <param name="font">The font which would be used to render text elements.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ImageAdRenderer.ReleaseResources">
+            <summary>
+            Immediately releases the unmanaged resources used by this object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.ImageAdRenderer.Height">
+            <summary>
+            The height of the rendered area
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.ImageAdRenderer.Width">
+            <summary>
+            The width of the rendered area
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.ImageAdRenderer.FrameCount">
+            <summary>
+            Number of frames to render
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.ErrorCode">
+            <summary>
+            Enumeration of error codes that identify various reasons ads could not be downloaded.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ErrorCode.None">
+            <summary>
+            No error code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ErrorCode.NoAdAvailable">
+            <summary>
+            The error code for no ad available errors.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ErrorCode.NetworkConnectionFailure">
+            <summary>
+            The error code for any network errors.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ErrorCode.Other">
+            <summary>
+            The error code for other errors.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.ErrorEventArgs">
+            <summary>
+            Provides additional information in the event of an error in the advertising system.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ErrorEventArgs.errorCode">
+            <summary>
+            Error code for this error event - for internal debugging use
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ErrorEventArgs.errorDescription">
+            <summary>
+            Error description for this error event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ErrorEventArgs.#ctor(Microsoft.Advertising.Mobile.Xna.ErrorCode,System.String)">
+            <summary>
+            Initialize the error event.
+            </summary>
+            <param name="errorCode">Error code</param>
+            <param name="errorDescription">Error description</param>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.ErrorEventArgs.ErrorCode">
+            <summary>
+            Gets the <see cref="P:Microsoft.Advertising.Mobile.Xna.ErrorEventArgs.ErrorCode"/> associated with this error.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.ErrorEventArgs.ErrorDescription">
+            <summary>
+            Gets a description of the problem.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.Gender">
+            <summary>
+            The gender of the user as a demographic targeting parameter.
+            
+            The value <c>Unknown</c> is used if the gender is not known.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Gender.Unknown">
+            <summary>
+            Default value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Gender.Male">
+            <summary>
+            Male.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Gender.Female">
+            <summary>
+            Female.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.HttpRequestData">
+            <summary>
+            Defines the data for the Http web request
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.HttpRequestData.#ctor(System.String)">
+            <summary>
+            Constructs HttpRequestData
+            </summary>
+            <param name="url">URL to send the web request.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.HttpRequestData.#ctor(Microsoft.Advertising.Mobile.Xna.HttpRequestData)">
+            <summary>
+            Constructs HttpRequestData
+            <param name="requestData">reference to HttpRequestData.</param>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.HttpRequestData.Url">
+            <summary>
+            Gets or sets the URL
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.HttpResponseData">
+            <summary>
+            Defines the data for the Http web response
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.HttpResponseData.#ctor(System.Net.HttpStatusCode,System.Collections.Generic.List{System.Byte},System.String,System.Exception)">
+            <summary>
+            Constructs HttpResponseData
+            </summary>
+            <param name="statusCode">HTTP status code for the response.</param>
+            <param name="response">Http response. This is null in case of any error or non-success Http status code.</param>
+            <param name="contentType">Content type of response.</param>
+            <param name="innerException">Inner exception. This is null in case of success.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.HttpResponseData.#ctor">
+            <summary>
+            Default Constructor for HttpResponseData
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.HttpResponseData.StatusCode">
+            <summary>
+            Gets or sets the HTTP status code for the response
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.HttpResponseData.Response">
+            <summary>
+            Gets or sets the HTTP response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.HttpResponseData.ContentType">
+            <summary>
+            Gets or sets the response content type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.HttpResponseData.InnerExpception">
+            <summary>
+            Gets or sets the inner exception value.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.ImageAsset">
+            <summary>
+            Class for containing image asset attribute values.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ImageAsset.AltTextTagName">
+            <summary>
+            Various tag names and values in AdResponse from the back-end
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ImageAsset.width">
+            <summary>
+            Width of image
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ImageAsset.height">
+            <summary>
+            Height of image
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ImageAsset.imageBuffer">
+            <summary>
+            Image Buffer
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ImageAsset.imageType">
+            <summary>
+            Image type
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ImageAsset.altText">
+            <summary>
+            Image alternate text
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ImageAsset.#ctor(System.Object)">
+            <summary>
+            Constructor for ImageAsset.
+            </summary>
+            <param name="jsonData">JSON node with image data.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ImageAsset.UpdateImageInfo(System.Byte[],System.String)">
+            <summary>
+             Updates the image information once the image download is complete
+            </summary>
+            <param name="imageBuffer">Image buffer.</param>
+            <param name="contentType">Content Type of Image.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ImageAsset.GetImageType(System.String)">
+            <summary>
+             Helper method that converts the string version of an image type to ImageType enum
+            </summary>
+            <param name="inputType">content type header string recieved while downloading the image.</param>
+            <returns>ImageType equivalent for this string</returns>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.ImageAsset.AlternateText">
+            <summary>
+            Gets Alternate text value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.ImageAsset.ImageType">
+            <summary>
+            Gets Image Type value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.ImageAsset.ImageHeight">
+            <summary>
+            Gets Image Height value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.ImageAsset.ImageWidth">
+            <summary>
+            Gets Image Width value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.ImageAsset.Image">
+            <summary>
+            Gets Image buffer value
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.ImageAsset.ImageUrl">
+            <summary>
+            Image Url
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.ImageType">
+            <summary>
+            Represent the image types for banner Ads
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ImageType.None">
+            <summary>
+            Represent the image type when text Ad is specified
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ImageType.Jpg">
+            <summary>
+            Represent the JPG image type
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ImageType.Png">
+            <summary>
+            Represent the PNG image type
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ImageType.Gif">
+            <summary>
+            Represent the GIF image type
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.ImageType.All">
+            <summary>
+            Represent the image type when any image type is allowed
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.IncomeRange">
+            <summary>
+            The income range (in US dollars) of the user as a demographic targeting parameter.
+            
+            The value <c>Unknown</c> is used if the income range is not known.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.IncomeRange.Unknown">
+            <summary>
+            Default value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.IncomeRange.A">
+            <summary>
+            Less than 15,000.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.IncomeRange.B">
+            <summary>
+            Between 15,000 and 24,999.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.IncomeRange.C">
+            <summary>
+            Between 25,000 and 44,999.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.IncomeRange.D">
+            <summary>
+            Between 35,000 and 49,999.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.IncomeRange.E">
+            <summary>
+            Between 50,000 and 74,999.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.IncomeRange.F">
+            <summary>
+            Between 75,000 and 99,999.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.IncomeRange.G">
+            <summary>
+            Between 100,000 and 149,999.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.IncomeRange.H">
+            <summary>
+            More than 150,000.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.JSONParserToken">
+            <summary>
+            Represents different types of tokens as per JSON grammar.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.JSONParserToken.Unknown">
+            <summary>
+            Unknown value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.JSONParserToken.Null">
+            <summary>
+            Null value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.JSONParserToken.False">
+            <summary>
+            False value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.JSONParserToken.True">
+            <summary>
+            True value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.JSONParserToken.Number">
+            <summary>
+            Number value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.JSONParserToken.String">
+            <summary>
+            String value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.JSONParserToken.ObjectStart">
+            <summary>
+            Start of Object ==&gt; '{'
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.JSONParserToken.ObjectEnd">
+            <summary>
+            End of Object ==&gt; '}'
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.JSONParserToken.ObjectNameSeperator">
+            <summary>
+            Object Name/Value seperator ==&gt; ':'
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.JSONParserToken.ArrayStart">
+            <summary>
+            Start of Array ==&gt; '['
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.JSONParserToken.ArrayEnd">
+            <summary>
+            End of Array ==&gt; ']'
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.JSONParserToken.ItemSeperator">
+            <summary>
+            Array/Object items seperator ==&gt; ','
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.JSONParserToken.End">
+            <summary>
+            End of input
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.JSONReader">
+            <summary>
+            Parses data given as JSON format in a String and compiles it
+            into a data structure.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.JSONReader.stack">
+            <summary>
+            Stack used while parsing. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.JSONReader.inputString">
+            <summary>
+            Input string to parse. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.JSONReader.currentIndex">
+            <summary>
+            Current index into inputString being parsed. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONReader.#ctor">
+            <summary>
+            Constructor. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONReader.Parse(System.String)">
+            <summary>
+            Parse the input string. 
+            </summary>
+            <param name="stringData">string to parse.</param>
+            <returns>The JSON node object parsed from the input</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONReader.DecodeEscapeChars(System.String)">
+            <summary>
+            Decodes following sequences:
+            u0008, u0009, u000a, u000c, u000d
+            </summary>
+            <param name="input">Input string.</param>
+            <returns>returns decoded string.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONReader.RemoveEscapeChars(System.String)">
+            <summary>
+            Removes the escape ('\') character. If "\\" is in input, it will only get rid
+            of the first '\' char.
+            </summary>
+            <param name="input">Input string from which to remove '\' characters.</param>
+            <returns>String without '\' characters.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONReader.ParseDataAndStack">
+            <summary>
+            Picks the top node from the stack and processes it till the stack is empty
+            or end of data is reached.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONReader.ParseNameValuePair(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Parses a name, value pair in the JSON input ( Ex: { Name : Value } )
+            then adds the parsed object to the given JSON object [dictObj]
+            </summary>
+            <param name="dictObj">JSON Object Node to which the name/value pair should be added.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONReader.ParseArrayValue(Microsoft.Advertising.Mobile.Xna.JSONParserToken,System.Collections.Generic.List{System.Object})">
+            <summary>
+            Parses one element of an array in the JSON input, and adds it
+            to the given array object [arrayNode]
+            </summary>
+            <param name="tokenType">Current token.</param>
+            <param name="arrayNode">Array Node to add the Value.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONReader.ParseSimpleValue(Microsoft.Advertising.Mobile.Xna.JSONParserToken)">
+            <summary>
+            For a given token extracts the simple value from the data being parsed.
+            </summary>
+            <param name="tokenType">[in] token type.</param>
+            <returns>returns parsed value.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONReader.MatchAndMove(System.String,System.Int64)">
+            <summary>
+            Given a String (inputString), it returns true if the next matchLength 
+            characters of the string being parsed match the given string
+            </summary>
+            <param name="inputString">[in] Input string.</param>
+            <param name="matchLength">[in] The number of characters to match.</param>
+            <returns>returns true if exact match, else false.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONReader.ParseString">
+            <summary>
+            Parses the current location for a string value.
+            </summary>
+            <returns>Parsed string value.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONReader.ParseNumber">
+            <summary>
+            Parses the current location for a number value. At present the parser only parses the
+            value for integers. 
+            </summary>
+            <returns>Parsed interger value.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONReader.IgnoreSpaces">
+            <summary>
+            Ignores the blank spaces and move to the next charcter till its not a space.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONReader.MoveNext">
+            <summary>
+            Moves to the next charcter unless its end of data.
+            </summary>
+            <returns>returns false if cannot move because of end of data, else returns true.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONReader.GetCurrentTokenAndMoveNext">
+            <summary>
+            Gets the current token and move to next chacter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONReader.GetCurrentToken">
+            <summary>
+            Gets the current token.
+            </summary>
+            <returns>Token type found.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONReader.ParsedAllData">
+            <summary>
+            Checks if the entire input has been parsed or not.
+            </summary>
+            <returns>true if the entire input has been parsed, else false.</returns>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.JSONUtils">
+            <summary>
+            Utility class for working with JSON parsing.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONUtils.CreateContainerNode(System.Boolean)">
+            <summary>
+            Creates a container (array/object) JSON Node. 
+            </summary>
+            <param name="isArray">Specifies whether an array or object node should be created.</param>
+            <returns>JSON Node</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONUtils.ExtractStringPropertyValue(System.Object,System.String,System.Boolean)">
+            <summary>
+            Retrieves the string value from jsonNode. 
+            </summary>
+            <param name="jsonNode">JSON object node to retrieve the value from.</param>
+            <param name="keyName">Key for the value.</param>
+            <param name="isOptional">If the requested value is supposed to be optional or mandatory.</param>
+            <returns>Value of the key.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.JSONUtils.ExtractPropertyValue(System.Object,System.String,System.Boolean)">
+            <summary>
+            Retrieves the specified value from jsonNode. 
+            </summary>
+            <param name="jsonNode">JSON object node to retrieve the value from.</param>
+            <param name="keyName">Key for the value.</param>
+            <param name="isOptional">If the requested value is supposed to be optional or mandatory.</param>
+            <returns>Value of the key.</returns>
+            <remarks>Throws ProtocolException if the value is not found and is specified as mandatory.</remarks>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.Location">
+            <summary>
+            Represents the location data used for targeting in the form of latitude and longitude.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Location.#ctor(System.Double,System.Double)">
+            <summary>
+            Constructs a Location.
+            </summary>
+            <param name="latitude">latitude value</param>
+            <param name="longitude">longitude value</param>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Location.Latitude">
+            <summary>
+            Gets or sets the latitude of this Location.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.Location.Longitude">
+            <summary>
+            Gets or sets the longitude of this Location.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.LocationAsset">
+            <summary>
+            Class for containing location asset attribute values.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.LocationAsset.LatTagName">
+            <summary>
+            Latitude tag Name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.LocationAsset.LongTagName">
+            <summary>
+            Longitude tag Name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.LocationAsset.CityTagName">
+            <summary>
+            City tag Name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.LocationAsset.StateTagName">
+            <summary>
+            State tag Name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.LocationAsset.PostalCodeTagName">
+            <summary>
+            Postal Code tag Name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.LocationAsset.CountryTagName">
+            <summary>
+            Country tag Name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.LocationAsset.AddressOneTagName">
+            <summary>
+            Address Line 1 tag Name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.LocationAsset.city">
+            <summary>
+            City value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.LocationAsset.state">
+            <summary>
+            State value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.LocationAsset.postalCode">
+            <summary>
+            Postal Code value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.LocationAsset.country">
+            <summary>
+            Country value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.LocationAsset.address">
+            <summary>
+            Address value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.LocationAsset.latitude">
+            <summary>
+            Latitude value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.LocationAsset.longitude">
+            <summary>
+            Longitude value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.LocationAsset.hasCoordinates">
+            <summary>
+            Is the cordinates information available
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.LocationAsset.#ctor(System.Object)">
+            <summary>
+            Constructs LocationAsset from location JSON Object.
+            </summary>
+            <param name="locationObj">JSON Object Node for location info.</param>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.LocationAsset.AddressLine">
+            <summary>
+            Gets Address Line value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.LocationAsset.City">
+            <summary>
+            Gets City value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.LocationAsset.PostalCode">
+            <summary>
+            Gets Postal Code value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.LocationAsset.State">
+            <summary>
+            Gets State value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.LocationAsset.Country">
+            <summary>
+            Gets Country value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.LocationAsset.Latitude">
+            <summary>
+            Gets Latitude value.
+            </summary>
+            <remarks>Throws InvalidOperationException if the cordinates information is not available.</remarks>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.LocationAsset.Longitude">
+            <summary>
+            Gets Longitude value.
+            </summary>
+            <remarks>Throws InvalidOperationException if the cordinates information is not available.</remarks>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.LocationAsset.HasCoordinateData">
+            <summary>
+            Verify if cordinates information is present or not
+            </summary>
+            <returns>True if cordinates info is present, false otherwise.</returns>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.ProtocolException">
+            <summary>
+            Represents errors that might occur due to invalid ad response format/protocol.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ProtocolException.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.ProtocolException.#ctor(System.String)">
+            <summary>
+            Constructor taking string as parameter
+            </summary>
+            <param name="message">Error message</param>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.StorageUtils">
+            <summary>
+            Class for containing utility functions for storing and retriving data from persistent store.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.StorageUtils.WriteText(System.String,System.String,System.String)">
+            <summary>
+            Write text to a file. This will delete the old file if it exists before writing the specified text.
+            </summary>
+            <param name="directory">Directory name</param>
+            <param name="filename">File name</param>
+            <param name="text">Text to write</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.StorageUtils.ReadText(System.String,System.String)">
+            <summary>
+            Reads text from the file.
+            </summary>
+            <param name="directory">Directory name</param>
+            <param name="filename">File name</param>
+            <returns>Text in the file</returns>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.TextAd">
+            <summary>
+            A TextAd is an advertisement displaying few lines of text within an ad placement.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.TextAd.TitleTag">
+            <summary>
+            Title tag name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.TextAd.DescriptionTag">
+            <summary>
+            Description tag name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.TextAd.BusinessNameTag">
+            <summary>
+            Business name tag name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.TextAd.DomainNameTag">
+            <summary>
+            Domain name tag name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.TextAd.title">
+            <summary>
+            Title value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.TextAd.description">
+            <summary>
+            Description value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.TextAd.businessName">
+            <summary>
+            Business name value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.TextAd.domainName">
+            <summary>
+            Domain Name value
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.TextAd.#ctor(System.String,System.String,System.Object,System.Object,System.Object)">
+            <summary>
+            Constructor for TextAd.
+            </summary>
+            <param name="adTTL">time to live for ad.</param>
+            <param name="adType">type of ad.</param>
+            <param name="adNode">JSON node containing complete ad information.</param>
+            <param name="eventNode">JSON node containing information for impression/event report.</param>
+            <param name="assetNode">JSON node containing creative assets information.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.TextAd.GetLine(Microsoft.Advertising.Mobile.Xna.AdTextType)">
+            <summary>
+            Gets the requested line.
+            </summary>
+            <param name="textType">type of text requested.</param>
+            <returns>The corresponding text line. null if not available</returns>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.TextLine">
+            <summary>
+            Contains the information necessary to render a line of text in a text ad
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.TextLine.#ctor(System.String,Microsoft.Xna.Framework.Color)">
+            <summary>
+            Constructor to populate all the required parameters.
+            </summary>
+            <param name="text">The text associated with this line of text.</param>
+            <param name="color">The color to render the line of text.</param>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.Utilities">
+            <summary>
+            Class for containing utility functions.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.Utilities.HttpErrorMessage">
+            <summary>
+            Error message for non-success http status code.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.Utilities.MapHttpErrorToException(Microsoft.Advertising.Mobile.Xna.HttpResponseData)">
+            <summary>
+            Converts the input error http response into an exception.
+            </summary>
+            <param name="response">Http response data</param>
+            <returns>AdException for the error http response</returns>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.WebRequestCompleteCallback">
+            <summary>
+            Delegate to notify the completion of the web request
+            </summary>
+            <param name="request">Web request that got completed.</param>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper">
+            <summary>
+            Defines the Web request wrapper used to make web calls
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper.READ_BUFFER_SIZE">
+            <summary>
+            Bufffer details used to read the data from the network stream
+            </summary>
+        </member>
+        <member name="F:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper.webRequestCallback">
+            <summary>
+            Callback to notify the result
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper.#ctor(Microsoft.Advertising.Mobile.Xna.HttpRequestData[],System.Boolean)">
+            <summary>
+            Constructs WebRequestWrapper
+            </summary>
+            <param name="httpRequestsData">Array of input web requests data.</param>
+            <param name="continueOnFailure">Whether to continue to the next web request if any web request fails.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper.SendAsyncRequest(Microsoft.Advertising.Mobile.Xna.WebRequestCompleteCallback)">
+            <summary>
+            Sends the requests asynchronously
+            </summary>
+            <param name="webRequestCallback">Delegate to call asynchronously with the result.</param>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper.Cancel">
+            <summary>
+            Cancels any pending web requests
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper.GetUserAgentString">
+            <summary>
+            Retrieves the user agent string used for requests
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper.StartNextWebRequest">
+            <summary>
+            Attempts to start the next request.
+            </summary>
+            <returns> true if the next request was started, or false if there are no more requests or the requests got cancelled.</returns>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper.WebRespCallback(System.IAsyncResult)">
+            <summary>
+            Callback when the network call returns.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper.ReadCallback(System.IAsyncResult)">
+            <summary>
+            Callback when more data is read from the network stream.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper.ProcessCurrentRequestFailure">
+            <summary>
+            Processes failure while executing current web requests.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper.NotifyResults">
+            <summary>
+            Notifies the result to the caller.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper.ProcessCurrentRequestComplete">
+            <summary>
+            Tries to run the next request or notifies the results if there are no more requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper.Response">
+            <summary>
+            Gets the http responses for the requests. If this is called before the completion of 
+            web requests it will return null. The returned result is not a deep copy of
+            results, so the caller shouldn't modify the returned data.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper.WebRequestState">
+            <summary>
+            Private class to hold the .Net web request properties for the current request
+            </summary>
+        </member>
+        <member name="M:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper.WebRequestState.Cleanup">
+            <summary>
+            Clean up the state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper.WebRequestState.Request">
+            <summary>
+            Gets or sets the .Net HttpWebRequest for the current request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper.WebRequestState.Response">
+            <summary>
+            Gets or sets the .Net HttpWebResponse for the current request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WebRequestWrapper.WebRequestState.ResponseStream">
+            <summary>
+            Gets or sets the response stream for the current request.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Advertising.Mobile.Xna.WP7">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WP7.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WP7.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WP7.ActionMenuTitle">
+            <summary>
+              Looks up a localized string similar to Advertisement.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WP7.BrowseTextPrefix">
+            <summary>
+              Looks up a localized string similar to web.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WP7.CallTextPrefix">
+            <summary>
+              Looks up a localized string similar to call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WP7.CancelButtonText">
+            <summary>
+              Looks up a localized string similar to cancel.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WP7.Ellipses">
+            <summary>
+              Looks up a localized string similar to ....
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WP7.ExceptionInternalError">
+            <summary>
+              Looks up a localized string similar to Internal error encountered.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WP7.ExceptionLoadContentNotCalled">
+            <summary>
+              Looks up a localized string similar to LoadContent has not been called before Update/Draw.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WP7.ExceptionMessageForInvalidLocation">
+            <summary>
+              Looks up a localized string similar to The Location value is out of range..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WP7.ExceptionMessageForInvalidRotation">
+            <summary>
+              Looks up a localized string similar to Manual rotation cannot be used in automatic rotation mode..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WP7.ExceptionMessageForInvalidSize">
+            <summary>
+              Looks up a localized string similar to The rectangle dimensions do not meet the minimum size requirements ({0}x{1}).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WP7.ExceptionMessageForLongKeyword">
+            <summary>
+              Looks up a localized string similar to The Keyword string exceeds the allowed length..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WP7.ExceptionMessageRotateWhileEngaged">
+            <summary>
+              Looks up a localized string similar to Manual rotation not permitted while ad is engaged..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Advertising.Mobile.Xna.WP7.ExceptionNonPremiumWithNoApplicationId">
+            <summary>
+              Looks up a localized string similar to Non-premium ads require the manager to be created with a non-null, non-empty applicationID.
+            </summary>
+        </member>
+    </members>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>X6IIrrb6Xaf4LE5qVs07FJ5Pr9M=</DigestValue></Reference></SignedInfo><SignatureValue>
+    QTqnp8o8GzevJ7+xbXsf0DQoyflj350WPanRufLgk8PJs5n7/nxzmc+gF6KakDUt4OFYZx0i
+    70PaiSGoYbPeEdJ97Fe4SEEHU8ukLD/6NupDjyTRFVWX3HUxs9BaUAV1HQSvmZ+FbbVRrrVm
+    vbC416xrRQ4AnmlDzS62Dew6cYxU5GX0uVJ/IYdohGcD/xbc8ZcmZWqQf//1ARPiYqOgcp4Y
+    rHzuKz0TO+X638A9YQACLE0JhVI9EUKLm752NtCU/l0ekyEEXGohGWEIX4cBMabuxoXXsZjb
+    UPZjXfUh0PU2BccbjGsEOmFw9egmSeSHlk9V5xfQGM5YTzmQsijAoA==
+  </SignatureValue><KeyInfo>
+      <KeyValue>
+        <RSAKeyValue>
+          <Modulus>
+            vTCJ+0VyqFNrnolPACPAvtQdPbFZQDjzc5GCJuaWEgBT2RyCDjzOHbu990KNl9T8OBrkufnj
+            7NNhA7+g09Z1TVxGqe1e8NLiaVsac+qzHI0EzSlEoGRZLx6YXW7Hqxg5gmXEp7yrdYgZ6oeX
+            FCazfyZ2pNQ4OYTjsybVGPkr6dLJFlpUIfKXjYeGKf70SSzmi/gEP33NzZaShg1xA+LQ/gxC
+            Nf/XuD/djkUKffbXS61b8HZyHXcjfYk1xBxdslADS0dtB6dViJgGgKaBrVRO2IHW+r9CwDG+
+            VQ2Z1VNJEjDr5aWIfF7EeloUhwi0N2mg6zIkjAjr+dQUuuD8zeqkFQ==
+          </Modulus>
+          <Exponent>AQAB</Exponent>
+        </RSAKeyValue>
+      </KeyValue>
+      <X509Data>
+        <X509Certificate>
+          MIIEejCCA2KgAwIBAgIKYQHPPgAAAAAADzANBgkqhkiG9w0BAQUFADB5MQswCQYDVQQGEwJV
+          UzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWlj
+          cm9zb2Z0IENvcnBvcmF0aW9uMSMwIQYDVQQDExpNaWNyb3NvZnQgQ29kZSBTaWduaW5nIFBD
+          QTAeFw0wOTEyMDcyMjQwMjlaFw0xMTAzMDcyMjQwMjlaMIGDMQswCQYDVQQGEwJVUzETMBEG
+          A1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9zb2Z0
+          IENvcnBvcmF0aW9uMQ0wCwYDVQQLEwRNT1BSMR4wHAYDVQQDExVNaWNyb3NvZnQgQ29ycG9y
+          YXRpb24wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC9MIn7RXKoU2ueiU8AI8C+
+          1B09sVlAOPNzkYIm5pYSAFPZHIIOPM4du733Qo2X1Pw4GuS5+ePs02EDv6DT1nVNXEap7V7w
+          0uJpWxpz6rMcjQTNKUSgZFkvHphdbserGDmCZcSnvKt1iBnqh5cUJrN/Jnak1Dg5hOOzJtUY
+          +Svp0skWWlQh8peNh4Yp/vRJLOaL+AQ/fc3NlpKGDXED4tD+DEI1/9e4P92ORQp99tdLrVvw
+          dnIddyN9iTXEHF2yUANLR20Hp1WImAaApoGtVE7Ygdb6v0LAMb5VDZnVU0kSMOvlpYh8XsR6
+          WhSHCLQ3aaDrMiSMCOv51BS64PzN6qQVAgMBAAGjgfgwgfUwEwYDVR0lBAwwCgYIKwYBBQUH
+          AwMwHQYDVR0OBBYEFDh4BXPIGzKbX5KGVa+JusaZsXSOMA4GA1UdDwEB/wQEAwIHgDAfBgNV
+          HSMEGDAWgBTMHc52AHBbr/HaxE6aUUQuo0Rj8DBEBgNVHR8EPTA7MDmgN6A1hjNodHRwOi8v
+          Y3JsLm1pY3Jvc29mdC5jb20vcGtpL2NybC9wcm9kdWN0cy9DU1BDQS5jcmwwSAYIKwYBBQUH
+          AQEEPDA6MDgGCCsGAQUFBzAChixodHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20vcGtpL2NlcnRz
+          L0NTUENBLmNydDANBgkqhkiG9w0BAQUFAAOCAQEAKAODqxMN8f4Rb0J22EOruMZC+iRlNK51
+          sHEwjpa2g/py5P7NN+c6cJhRIA66cbTJ9NXkiugocHPV7eHCe+7xVjRagILrENdyA+oSTuzd
+          DYx7RE8MYXX9bpwH3c4rWhgNObBg/dr/BKoCo9j6jqO7vcFqVDsxX+QsbsvxTSoc8h52e4av
+          xofWsSrtrMwOwOSff+jP6IRyVIIYbirInpW0Gh7Bb5PbYqbBS2utye09kuOyL6t6dzlnagB7
+          gp0DEN5jlUkmQt6VIsGHC9AUo1/cczJyNh7/yCnFJFJPZkjJHR2pxSY5aVBOp+zCBmwuchvx
+          IdptJEiAgRVAfJ/MdDhKTw==
+        </X509Certificate>
+      </X509Data>
+      <X509Data>
+        <X509Certificate>
+          MIIEEjCCAvqgAwIBAgIPAMEAizw8iBHRPvZj7N9AMA0GCSqGSIb3DQEBBAUAMHAxKzApBgNV
+          BAsTIkNvcHlyaWdodCAoYykgMTk5NyBNaWNyb3NvZnQgQ29ycC4xHjAcBgNVBAsTFU1pY3Jv
+          c29mdCBDb3Jwb3JhdGlvbjEhMB8GA1UEAxMYTWljcm9zb2Z0IFJvb3QgQXV0aG9yaXR5MB4X
+          DTk3MDExMDA3MDAwMFoXDTIwMTIzMTA3MDAwMFowcDErMCkGA1UECxMiQ29weXJpZ2h0IChj
+          KSAxOTk3IE1pY3Jvc29mdCBDb3JwLjEeMBwGA1UECxMVTWljcm9zb2Z0IENvcnBvcmF0aW9u
+          MSEwHwYDVQQDExhNaWNyb3NvZnQgUm9vdCBBdXRob3JpdHkwggEiMA0GCSqGSIb3DQEBAQUA
+          A4IBDwAwggEKAoIBAQCpAr3BcOY78k4bKJ+XeF4w6qKpjSVf+P6VTKO3/p2iID58UaKboo9g
+          MmvRQmR57qx2yVTa8uuchhyPn4Rms8VremIj1h083g8BkuiWxL8tZpqaaCaZ0Dosvwy1WCbB
+          RucKPjiWLKkoOajsSYNC44QPu5psVWGsgnyhYC13TOmZtGQ7mlAcMQgkFJ+p55ErGOY9mGMU
+          YFgFZZ8dN1KH96fvlALGG9O/VUWziYC/OuxUlE6u/ad6bXROrxjMlgkoIQBXkGBpN7tLEgc8
+          Vv9b+6RmCgim0oFWV++2O14WgXcE2va+roCV/rDNf9anGnJcPMq88AijIjCzBoXJsyB3E4Xf
+          AgMBAAGjgagwgaUwgaIGA1UdAQSBmjCBl4AQW9Bw72lyniNRfhSyTY7/y6FyMHAxKzApBgNV
+          BAsTIkNvcHlyaWdodCAoYykgMTk5NyBNaWNyb3NvZnQgQ29ycC4xHjAcBgNVBAsTFU1pY3Jv
+          c29mdCBDb3Jwb3JhdGlvbjEhMB8GA1UEAxMYTWljcm9zb2Z0IFJvb3QgQXV0aG9yaXR5gg8A
+          wQCLPDyIEdE+9mPs30AwDQYJKoZIhvcNAQEEBQADggEBAJXoC8CN85cYNe24ASTYdxHzXGAy
+          n54Lyz4FkYiPyTrmIfLwV5MstaBHyGLv/NfMOztaqTZUaf4kbT/JzKreBXzdMY09nxBwarv+
+          Ek8YacD80EPjEVogT+pie6+qGcgrNyUtvmWhEoolD2Oj91Qc+SHJ1hXzUqxuQzIH/YIX+OVn
+          bA1R9r3xUse958Qw/CAxCYgdlSkaTdUdAqXxgOADtFv0sd3IV+5lScdSVLa0AygS/5DW8AiP
+          friXxas3LOR65Kh343agANBqP8HSNorgQRKoNWobats14dQcBOSoRQTIWjM4bk0cDWK3CqKM
+          09VUP0bNHFWmcNsSOoeTdZ+n0qA=
+        </X509Certificate>
+      </X509Data>
+      <X509Data>
+        <X509Certificate>
+          MIIEYDCCA0ygAwIBAgIKLqsR3FD/XJ3LwDAJBgUrDgMCHQUAMHAxKzApBgNVBAsTIkNvcHly
+          aWdodCAoYykgMTk5NyBNaWNyb3NvZnQgQ29ycC4xHjAcBgNVBAsTFU1pY3Jvc29mdCBDb3Jw
+          b3JhdGlvbjEhMB8GA1UEAxMYTWljcm9zb2Z0IFJvb3QgQXV0aG9yaXR5MB4XDTA3MDgyMjIy
+          MzEwMloXDTEyMDgyNTA3MDAwMFoweTELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0
+          b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEj
+          MCEGA1UEAxMaTWljcm9zb2Z0IENvZGUgU2lnbmluZyBQQ0EwggEiMA0GCSqGSIb3DQEBAQUA
+          A4IBDwAwggEKAoIBAQC3eX3WXbNFOag0rDHa+SU1SXfA+x+ex0Vx79FG6NSMw2tMUmL0mQLD
+          TdhJbC8kPmW/ziO3C0i3f3XdRb2qjw5QxSUr8qDnDSMf0UEk+mKZzxlFpZNKH5nNsy8iw0ot
+          fG/ZFR47jDkQOd29KfRmOy0BMv/+J0imtWwBh5z7urJjf4L5XKCBhIWOsPK4lKPPOKZQhRcn
+          h07dMPYAPfTG+T2BvobtbDmnLjT2tC6vCn1ikXhmnJhzDYav8sTzILlPEo1jyyzZMkUZ7rtK
+          ljtQUxjOZlF5qq2HyFY+n4JQiG4FsTXBeyS9UmY9mU7MK34zboRHBtGe0EqGAm6GAKTAh99T
+          AgMBAAGjgfowgfcwEwYDVR0lBAwwCgYIKwYBBQUHAwMwgaIGA1UdAQSBmjCBl4AQW9Bw72ly
+          niNRfhSyTY7/y6FyMHAxKzApBgNVBAsTIkNvcHlyaWdodCAoYykgMTk5NyBNaWNyb3NvZnQg
+          Q29ycC4xHjAcBgNVBAsTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEhMB8GA1UEAxMYTWljcm9z
+          b2Z0IFJvb3QgQXV0aG9yaXR5gg8AwQCLPDyIEdE+9mPs30AwDwYDVR0TAQH/BAUwAwEB/zAd
+          BgNVHQ4EFgQUzB3OdgBwW6/x2sROmlFELqNEY/AwCwYDVR0PBAQDAgGGMAkGBSsOAwIdBQAD
+          ggEBAHurrn5KJvLOvE50olgndCp1s4b9q0yUeABN6crrGNxpxQ6ifPMCQ8bKh8z4U8zCn71W
+          b/BjRKlEAO6WyJrVHLgLnxkNlNfaHq0pfe/tpnOsj945jj2Yarw4bdKIryP93+nWaQmRiL3+
+          4QC7NPP3fPkQEi4F6ymWk0JrKHG3OI/gBw3JXWjNvYBBa2aou7e7jjTK8gMQfHr10uBC33v+
+          4eGs/vbf1Q2zcNaS40+2OKJ8LdQ92zQLYjcCn4FqI4n2XGOPsFq7OddgjFWEGjP1O5igggyi
+          X4uzLLehpcur2iC2vzAZhSAUDSq8UvRB4F4w45IoaYfBcOLzp6vOgEJydg4=
+        </X509Certificate>
+      </X509Data>
+    </KeyInfo><Object id="ts-countersig"><X509Data><X509Certificate>MIIEqjCCA5KgAwIBAgIKYQWiMAAAAAAACDANBgkqhkiG9w0BAQUFADB5MQswCQYDVQQGEwJVUzET
+MBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9zb2Z0
+IENvcnBvcmF0aW9uMSMwIQYDVQQDExpNaWNyb3NvZnQgVGltZXN0YW1waW5nIFBDQTAeFw0wODA3
+MjUxOTAxMTVaFw0xMzA3MjUxOTExMTVaMIGzMQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGlu
+Z3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMQ0w
+CwYDVQQLEwRNT1BSMScwJQYDVQQLEx5uQ2lwaGVyIERTRSBFU046ODVEMy0zMDVDLTVCQ0YxJTAj
+BgNVBAMTHE1pY3Jvc29mdCBUaW1lLVN0YW1wIFNlcnZpY2UwggEiMA0GCSqGSIb3DQEBAQUAA4IB
+DwAwggEKAoIBAQDwBC2ylsAagWclsSZisxNLzjC6wBI4/IFlNAfENrIkaPYHBMAHl/S38XseYixG
+2UukUTS302ztWju0g6FHPREILjVrRebCPIwCZgKpGGnrSu0nLO48d1uk1HCZS1eEENCvLfiJHebq
+KbTnz54GYqdyVMI7xs8/uOGwWBBs5aXXw8J1N730heGB6CjYG/HyrvGCo9bXA6KfFYT7Pfqr4bYy
+yKACZPPm/xomcQhTihUC8oMndkmCcafvrTJ4xtdsFk8iZZdiTUYv/yOvheymcL0Dy9rYMgXFK5BA
+tp7VLIZst8sTMn2Nxn6uFy8y/Ga7HbBFVfit+i1ng2cpk4TSWqEjAgMBAAGjgfgwgfUwHQYDVR0O
+BBYEFOiX9vfvjPHmaeNZaE73mIp63ZsuMB8GA1UdIwQYMBaAFG/oTj+XuTSrS4aPvJzqrDtBQ8bQ
+MEQGA1UdHwQ9MDswOaA3oDWGM2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2kvY3JsL3Byb2R1
+Y3RzL3RzcGNhLmNybDBIBggrBgEFBQcBAQQ8MDowOAYIKwYBBQUHMAKGLGh0dHA6Ly93d3cubWlj
+cm9zb2Z0LmNvbS9wa2kvY2VydHMvdHNwY2EuY3J0MBMGA1UdJQQMMAoGCCsGAQUFBwMIMA4GA1Ud
+DwEB/wQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEADT93X5E8vqU1pNsFBYQfVvLvmabHCI0vs80/
+cdWGfHcf3esXsr184/mZ8gpFSK0Uu2ks8j5nYlTy7n8nEZI57M7Zh06I92BHI3snFUAIn78NMQSC
+2DW2DJwA04uqeGHFtYhBnT423FikJ5s62r0GXRSmsg9MwY48i/Jimfhm7dXzHCiwMtvKMQm8+yJo
+Rkz603Mi5ymOIgD7Vr8GroGgFbo0+SiOH0piBaGJ9YFH6Q2RCNdYO48eawlpqcBIfFWCP18AOEOc
+Bsw/2C+/T3MJPf26XvTH7DfCZGGgTdQ9cMxbsBOBwdSjMRq9ZNaW0no/KltGUwk8zQP5P1kAzIlT
+YQ==</X509Certificate></X509Data><X509Data><X509Certificate>MIIEnTCCA4WgAwIBAgIQaguZT8AAJasR20UfWHpnojANBgkqhkiG9w0BAQUFADBwMSswKQYDVQQL
+EyJDb3B5cmlnaHQgKGMpIDE5OTcgTWljcm9zb2Z0IENvcnAuMR4wHAYDVQQLExVNaWNyb3NvZnQg
+Q29ycG9yYXRpb24xITAfBgNVBAMTGE1pY3Jvc29mdCBSb290IEF1dGhvcml0eTAeFw0wNjA5MTYw
+MTA0NDdaFw0xOTA5MTUwNzAwMDBaMHkxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpXYXNoaW5ndG9u
+MRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVNaWNyb3NvZnQgQ29ycG9yYXRpb24xIzAhBgNV
+BAMTGk1pY3Jvc29mdCBUaW1lc3RhbXBpbmcgUENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+CgKCAQEA3Ddu+6/IQkpxGMjOSD5TwPqrFLosMrsST1LIg+0+M9lJMZIotpFk4B9QhLrCS9F/Bfjv
+db6Lx6jVrmlwZngnZui2t++Fuc3uqv0SpAtZIikvz0DZVgQbdrVtZG1KVNvd8d6/n4PHgN9/TAI3
+lPXAnghWHmhHzdnAdlwvfbYlBLRWW2ocY/+AfDzu1QQlTTl3dAddwlzYhjcsdckO6h45CXx2/p1s
+bnrg7D6Pl55xDl8qTxhiYDKe0oNOKyJcaEWL3i+EEFCy+bUajWzuJZsT+MsQ14UO9IJ2czbGlXqi
+zGAG7AWwhjO3+JRbhEGEWIWUbrAfLEjMb5xD4GrofyaOawIDAQABo4IBKDCCASQwEwYDVR0lBAww
+CgYIKwYBBQUHAwgwgaIGA1UdAQSBmjCBl4AQW9Bw72lyniNRfhSyTY7/y6FyMHAxKzApBgNVBAsT
+IkNvcHlyaWdodCAoYykgMTk5NyBNaWNyb3NvZnQgQ29ycC4xHjAcBgNVBAsTFU1pY3Jvc29mdCBD
+b3Jwb3JhdGlvbjEhMB8GA1UEAxMYTWljcm9zb2Z0IFJvb3QgQXV0aG9yaXR5gg8AwQCLPDyIEdE+
+9mPs30AwEAYJKwYBBAGCNxUBBAMCAQAwHQYDVR0OBBYEFG/oTj+XuTSrS4aPvJzqrDtBQ8bQMBkG
+CSsGAQQBgjcUAgQMHgoAUwB1AGIAQwBBMAsGA1UdDwQEAwIBhjAPBgNVHRMBAf8EBTADAQH/MA0G
+CSqGSIb3DQEBBQUAA4IBAQCUTRExwnxQuxGOoWEHAQ6McEWN73NUvT8JBS3/uFFThRztOZG3o1YL
+3oy2OxvR+6ynybexUSEbbwhpfmsDoiJG7Wy0bXwiuEbThPOND74HijbB637pcF1Fn5LSzM7djsDh
+vyrNfOzJrjLVh7nLY8Q20Rghv3beO5qzG3OeIYjYtLQSVIz0nMJlSpooJpxgig87xxNleEi7z62D
+Ok+wYljeMOnpOR3jifLaOYH5EyGMZIBjBgSW8poCQy97Roi6/wLZZflK3toDdJOzBW4MzJ3cKGF8
+SPEXnBEhOAIch6wGxZYyuOVAxlM9vamJ3uhmN430IpaczLB3VFE61nJEsiP2</X509Certificate></X509Data><CounterSignature xmlns="http://schemas.microsoft.com/xmldsig/timestamp/2003" ts-format="cms-timestamp-message">MIIGyQYJKoZIhvcNAQcCoIIGujCCBrYCAQMxCTAHBgUrDgMCGjCCARMGCSqGSIb3DQEHAaCCAQQE
+ggEAQTqnp8o8GzevJ7+xbXsf0DQoyflj350WPanRufLgk8PJs5n7/nxzmc+gF6KakDUt4OFYZx0i
+70PaiSGoYbPeEdJ97Fe4SEEHU8ukLD/6NupDjyTRFVWX3HUxs9BaUAV1HQSvmZ+FbbVRrrVmvbC4
+16xrRQ4AnmlDzS62Dew6cYxU5GX0uVJ/IYdohGcD/xbc8ZcmZWqQf//1ARPiYqOgcp4YrHzuKz0T
+O+X638A9YQACLE0JhVI9EUKLm752NtCU/l0ekyEEXGohGWEIX4cBMabuxoXXsZjbUPZjXfUh0PU2
+BccbjGsEOmFw9egmSeSHlk9V5xfQGM5YTzmQsijAoKCCA32hggN5MIICYQIBATCB46GBuaSBtjCB
+szELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAc
+BgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjENMAsGA1UECxMETU9QUjEnMCUGA1UECxMebkNp
+cGhlciBEU0UgRVNOOjg1RDMtMzA1Qy01QkNGMSUwIwYDVQQDExxNaWNyb3NvZnQgVGltZS1TdGFt
+cCBTZXJ2aWNloiUKAQEwCQYFKw4DAhoFAAMVAE1vNX8OZDTal7GvxUD7b90OhaifoIHBMIG+pIG7
+MIG4MQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEM
+MAoGA1UEChMDQU9DMR4wHAYDVQQLExVNaWNyb3NvZnQgQ29ycG9yYXRpb24xJzAlBgNVBAsTHm5D
+aXBoZXIgTlRTIEVTTjoyMkExLTIwOEUtODdCMDErMCkGA1UEAxMiTWljcm9zb2Z0IFRpbWUgU291
+cmNlIE1hc3RlciBDbG9jazANBgkqhkiG9w0BAQUFAAIFANEYdUgwIhgPMjAxMTAzMDIwNzUwMzJa
+GA8yMDExMDMwMzA3NTAzMloweDA+BgorBgEEAYRZCgQBMTAwLjAKAgUA0Rh1SAIBADAKAgEAAgIE
+rQIB/zAIAgEAAgMDFy4wCgIFANEZxsgCAQAwNgYKKwYBBAGEWQoEAjEoMCYwDAYKKwYBBAGEWQoD
+AaAKMAgCAQACAw9CQKEKMAgCAQACAwehIDANBgkqhkiG9w0BAQUFAAOCAQEAx5u2hl4I1vFrJo8U
+6sByRyyuL7NY826QaFtZDepg+AU5jXGrW7vaPGlqib9zeyhW1OkkKxz5hDyAjyzPJI0K8jpZk0qn
+V7J+ti5pg/XkB+Yqe9x3Nf3kTn6frSX1N7FGd95DKchQtLsIcYY8hRQotumR6IXEq8UKwnubWPs6
+uLeAH7ArbQfoPUp3c3M/aGIlzgtIpRVbmLOtyq5apFWvhtVRtSq0ccwvXEML5tk/fC36Web4D+jN
+1kBR3SPc5LDE4NPmj878vxP7/K14d/w3jkwxhZU4E/ON3SRUnj0mTKMjNGMVmt2fikNLDXisx9m3
+jrkKzZus8eBp19RYqoylhTGCAgwwggIIAgEBMIGHMHkxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpX
+YXNoaW5ndG9uMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVNaWNyb3NvZnQgQ29ycG9yYXRp
+b24xIzAhBgNVBAMTGk1pY3Jvc29mdCBUaW1lc3RhbXBpbmcgUENBAgphBaIwAAAAAAAIMAcGBSsO
+AwIaoF0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMTEwMzAyMTgx
+MTM5WjAjBgkqhkiG9w0BCQQxFgQUpd1tlhLXpMjAk1resep45T0y6hEwDQYJKoZIhvcNAQEFBQAE
+ggEApqH9bXDK4kjlt3ytfnL1A2NNboCh3v8rKYVojhckEq8dTVN+p1NDScvbSZfPxbIdy/6JreFA
+6xZ16s8jTCS4IyvGGUjAaU2rRbmswCGZYNcOMlTlGHIZJ0XIpF1tDqT5ArpPu2rupHuc5cjiD9OK
+gmcugeVdm2d8HKe8msaPyCkZaXgri0AuZ99oMS1xnFgm2A1z7jyiXSOG+nj4B3os2BTMCKTpB9vQ
+eRZA7L8l/InZOZA1D0QMqkTiqIFfCIYqgbhmJTf51+5xcsaGJ22BapRJJO/W9LXEduR7jgkKSYWD
+jl4UokGsT4WsGtVRpGhAG+502F5JuIsSZcfiG8EqPA==</CounterSignature></Object></Signature></doc>
